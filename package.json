@@ -1,0 +1,13 @@
+{
+  "name": "personal-projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "photo-galery/*"
+    ] 
+  },
+  "author": "fpdsjr <flaviopds.jr@gmail.com>",
+  "license": "MIT"
+}

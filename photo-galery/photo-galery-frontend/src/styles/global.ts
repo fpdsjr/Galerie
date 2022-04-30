@@ -86,12 +86,10 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-image-modal-size:focus {
     outline: none;
   }
-
-
+  
   .react-modal-image-modal-size::-webkit-scrollbar {
     display: none;
   }
-
 
   .react-modal-upload-modal {
     margin: 0 auto;
@@ -100,7 +98,11 @@ export const GlobalStyle = createGlobalStyle`
     height: 86%;
     border-radius: 0.25rem;
     background-color: #f0f2f5;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: auto;
   }
-`;
+
+  .react-modal-upload-modal::-webkit-scrollbar {
+    display: none;
+  }
+
+  `;

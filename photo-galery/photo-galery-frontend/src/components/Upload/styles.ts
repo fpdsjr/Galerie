@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem;
 `;
 
 const dropZoneSizes = {

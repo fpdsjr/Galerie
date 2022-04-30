@@ -1,8 +1,10 @@
 /* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from 'react';
+import { MdOutlineCancel } from 'react-icons/md';
 
+import LoaderSvg from '../../assets/loader.svg';
 import { Api } from '../../services/api';
-import { Container } from './styles';
+import { Container, PreviewContainer, PreviewImage, Loader } from './styles';
 
 interface IPreviewUploadList {
   file: File;
@@ -14,6 +16,7 @@ interface IPreviewUploadList {
 
 interface IProps {
   filesTobeUploaded: IPreviewUploadList[];
+  deleteImage: (id: string) => void;
 }
 
 interface IFile {
@@ -24,7 +27,7 @@ interface IFile {
   uploaded: boolean;
 }
 
-function UploadedList({ filesTobeUploaded }: IProps) {
+function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
   const [uploadedResult, setUploadedResult] = useState<IFile[]>([]);
 
   async function processUpload(image: IFile) {
@@ -48,11 +51,13 @@ function UploadedList({ filesTobeUploaded }: IProps) {
   return (
     <Container>
       {filesTobeUploaded.map(({ name, preview, id, uploaded }) => (
-        <div key={id}>
-          <p>{name}</p>
-          <img src={preview} alt={name} />
-          {uploaded ? 'verdade' : 'falso'}
-        </div>
+        <PreviewContainer key={id}>
+          <PreviewImage src={preview} alt={name} />
+          <button type="button" onClick={() => deleteImage(id)}>
+            <MdOutlineCancel size={40} title="Remove" />
+          </button>
+          {uploaded ? <Loader src={LoaderSvg} alt="loader" /> : ''}
+        </PreviewContainer>
       ))}
     </Container>
   );

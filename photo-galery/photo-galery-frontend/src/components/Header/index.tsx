@@ -27,7 +27,7 @@ function Header({
         <h1>Galerie</h1>
         <div>
           <UploadBotton type="button" onClick={handleOpenUploadModal}>
-            Upload Photo
+            Upload
           </UploadBotton>
           <MenuImageDropDown ref={userElement} onClick={toogleModalUser} />
         </div>

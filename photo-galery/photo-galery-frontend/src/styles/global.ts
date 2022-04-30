@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-interface IModelImage {
-  imageClick: boolean;
-}
-
-export const GlobalStyle = createGlobalStyle<IModelImage>`
+export const GlobalStyle = createGlobalStyle`
   :root {
     --baby-blue: #70d6ffff;
     --french-pink: #ff70a6ff;
@@ -13,7 +9,6 @@ export const GlobalStyle = createGlobalStyle<IModelImage>`
     --dark-slate-gray: #2c423fff;
     --background: #f0f2f5;
   }
-  
   
   * {
     margin: 0;
@@ -40,6 +35,7 @@ export const GlobalStyle = createGlobalStyle<IModelImage>`
     font-family: 'Encode Sans Expanded', sans-serif;
     font-weight: 400;
   }
+  
   h1, h2, h3 , h4 , h5 , h6 , strong {
     font-weight: 600;
   }
@@ -101,8 +97,10 @@ export const GlobalStyle = createGlobalStyle<IModelImage>`
     margin: 0 auto;
     width: 70%;
     max-width: 88%;
-    height: 90%;
+    height: 86%;
     border-radius: 0.25rem;
     background-color: #f0f2f5;
+    overflow: scroll;
+    overflow-x: hidden;
   }
 `;

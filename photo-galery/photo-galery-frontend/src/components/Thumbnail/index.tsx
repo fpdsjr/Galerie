@@ -4,6 +4,7 @@ import { Image, ImageContainer } from './styles';
 
 interface IThumbnailProps {
   handleOpenUploadModal: () => void;
+  src: string;
 }
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -26,7 +27,7 @@ const imageVariants = {
   hover: { scale: 1.1 },
 };
 
-function Thumbnail({ id, i, handleOpenUploadModal }: IThumbnailProps) {
+function Thumbnail({ id, i, handleOpenUploadModal, src }: IThumbnailProps) {
   return (
     <motion.div variants={thumbnailVariants}>
       <ImageContainer
@@ -35,7 +36,7 @@ function Thumbnail({ id, i, handleOpenUploadModal }: IThumbnailProps) {
         transition={transition}>
         <Image
           onClick={() => handleOpenUploadModal()}
-          src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+          src={src}
           alt="The Barbican"
           variants={imageVariants}
           transition={transition}

@@ -54,7 +54,7 @@ export const MenuImageDropDown = styled.div`
 `;
 
 export const UploadBotton = styled.button`
-  border-radius: 14px;
+  border-radius: 10px;
   border: none;
   font-size: 1.1rem;
   font-weight: 700;

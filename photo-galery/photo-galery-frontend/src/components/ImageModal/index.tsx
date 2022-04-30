@@ -17,7 +17,7 @@ function ImageModal({
   handleCloseUploadModal,
 }: IImageModalProps) {
   const [imageClick, setImageClick] = useState(false);
-  const [text, setText] = React.useState('');
+  const [text, setText] = useState('');
   const [state, copyToClipboard] = useCopyToClipboard();
 
   function handleImageClick() {

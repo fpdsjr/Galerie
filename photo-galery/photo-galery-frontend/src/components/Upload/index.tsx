@@ -1,11 +1,12 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/jsx-props-no-spreading */
-// eslint-disable-next-line react/jsx-props-no-spreading
 import { uniqueId } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+import uploadSvg from '../../assets/upload-animation.svg';
 import UploadedList from '../UploadedList';
-import { Container } from './styles';
+import { Container, DropzoneContainer } from './styles';
 
 interface IPreviewUploadList {
   file: File;
@@ -44,27 +45,36 @@ function Upload() {
     handleUpload();
   }, [uploadFiles]);
 
-  const { getRootProps, getInputProps, isDragActive, isDragReject } =
-    useDropzone({
-      onDrop,
-      accept: 'image/*',
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: 'image/jpeg,image/png',
+  });
+
+  function deleteImage(id: string) {
+    const deletedImage = filesTobeUploaded.filter((image) => image.id !== id);
+
+    setFilesTobeUploaded(deletedImage);
+  }
 
   return (
-    <>
-      <Container
+    <Container>
+      <DropzoneContainer
         {...getRootProps()}
-        isDragActive={isDragActive}
-        isDragReject={isDragReject}>
+        fileLength={filesTobeUploaded.length}>
         <input {...getInputProps()} />
         {isDragActive ? (
-          <p>Drop the files here ...</p>
+          <p>Drop the images here ...</p>
         ) : (
-          <p>Drag drop some files here, or click to select files</p>
+          <p>Drag drop some images here, or click to select</p>
         )}
-      </Container>
-      <UploadedList filesTobeUploaded={filesTobeUploaded} />
-    </>
+        <img src={uploadSvg} alt="upload" />
+      </DropzoneContainer>
+
+      <UploadedList
+        filesTobeUploaded={filesTobeUploaded}
+        deleteImage={deleteImage}
+      />
+    </Container>
   );
 }
 

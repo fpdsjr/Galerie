@@ -11,13 +11,12 @@ import {
 } from './styles';
 
 interface IThumbnailProps {
-  handleOpenUploadModal: () => void;
+  handleOpenImageModal: () => void;
   src: string;
 }
 
-function Thumbnail({ handleOpenUploadModal, src }: IThumbnailProps) {
-  const ImageInfo = useImage();
-  const { setImageInfo } = ImageInfo;
+function Thumbnail({ handleOpenImageModal, src }: IThumbnailProps) {
+  const { setImageInfo } = useImage();
 
   return (
     <motion.div variants={thumbnailVariants}>
@@ -27,7 +26,7 @@ function Thumbnail({ handleOpenUploadModal, src }: IThumbnailProps) {
         transition={transition}>
         <Image
           onClick={() => {
-            handleOpenUploadModal();
+            handleOpenImageModal();
             setImageInfo({ src });
           }}
           src={src}

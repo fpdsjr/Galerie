@@ -2,8 +2,6 @@ import Modal from 'react-modal';
 
 import Upload from '../Upload';
 
-// import { Container } from './styles';
-
 interface IUploadModal {
   isUploadModalOpen: boolean;
   handleCloseUploadModal: () => void;

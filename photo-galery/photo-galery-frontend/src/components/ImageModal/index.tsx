@@ -10,19 +10,18 @@ import { Container, ButtonsContainer, ModalImage, ShareButton } from './styles';
 
 interface IImageModalProps {
   isImageModalOpen: boolean;
-  handleCloseUploadModal: () => void;
+  handleCloseImageModal: () => void;
 }
 
 function ImageModal({
   isImageModalOpen,
-  handleCloseUploadModal,
+  handleCloseImageModal,
 }: IImageModalProps) {
   const [imageClick, setImageClick] = useState(false);
   const [text, setText] = useState('');
   const [state, copyToClipboard] = useCopyToClipboard();
 
-  const image = useImage();
-  const { ImageInfo } = image;
+  const { ImageInfo } = useImage();
 
   function handleImageClick() {
     setImageClick(!imageClick);
@@ -47,7 +46,7 @@ function ImageModal({
 
   useEffect(() => {
     copyToClipboard('');
-  }, [handleCloseUploadModal]);
+  }, [handleCloseImageModal]);
 
   return (
     <Modal
@@ -56,7 +55,7 @@ function ImageModal({
         imageClick ? 'react-modal-image-modal-size' : 'react-modal-image-modal'
       }
       isOpen={isImageModalOpen}
-      onRequestClose={handleCloseUploadModal}>
+      onRequestClose={handleCloseImageModal}>
       <Container>
         <ButtonsContainer>
           <ShareButton type="button" onClick={() => copyToClipboard(text)}>

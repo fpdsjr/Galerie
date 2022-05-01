@@ -5,6 +5,7 @@ import { IoIosShareAlt } from 'react-icons/io';
 import Modal from 'react-modal';
 import { useCopyToClipboard } from 'react-use';
 
+import { useImage } from '../../context/ImageInfoProvider/useImage';
 import { Container, ButtonsContainer, ModalImage, ShareButton } from './styles';
 
 interface IImageModalProps {
@@ -19,6 +20,9 @@ function ImageModal({
   const [imageClick, setImageClick] = useState(false);
   const [text, setText] = useState('');
   const [state, copyToClipboard] = useCopyToClipboard();
+
+  const image = useImage();
+  const { ImageInfo } = image;
 
   function handleImageClick() {
     setImageClick(!imageClick);
@@ -71,7 +75,7 @@ function ImageModal({
         <ModalImage
           imageClick={imageClick}
           onClick={() => handleImageClick()}
-          src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+          src={ImageInfo?.src}
           alt="alt"
         />
       </Container>

@@ -52,7 +52,7 @@ function Login() {
           Login
         </button>
         <p>
-          ${dont} have an account? <strong>Join</strong>
+          {dont} have an account? <strong>Join</strong>
         </p>
       </div>
     </Container>

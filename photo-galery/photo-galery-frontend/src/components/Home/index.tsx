@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 import useCloseMenuDropDown from '../../hooks/useCloseMenuDropDown';
+import useHandleModal from '../../hooks/useHandleModal';
 import Gallery from '../Gallery';
 import Header from '../Header';
 import UploadModal from '../UploadModal';
@@ -9,18 +10,10 @@ import UserDropDown from '../UserDropDown';
 import { Container, Footer } from './styles';
 
 function Home() {
-  const [isUploadModalOpen, setIsUploadModalOpen] = useState<boolean>(false);
   const [modalUser, setModalUser] = useState(false);
 
   const { menuRef, userElement } = useCloseMenuDropDown({ setModalUser });
-
-  function handleOpenUploadModal() {
-    setIsUploadModalOpen(true);
-  }
-
-  function handleCloseUploadModal() {
-    setIsUploadModalOpen(false);
-  }
+  const { isModalOpen, handleOpenClose, handleCloseModal } = useHandleModal();
 
   function toogleModalUser() {
     setModalUser(!modalUser);
@@ -29,13 +22,13 @@ function Home() {
   return (
     <Container>
       <Header
-        handleOpenUploadModal={handleOpenUploadModal}
+        handleOpenUploadModal={handleOpenClose}
         toogleModalUser={toogleModalUser}
         userElement={userElement}
       />
       <UploadModal
-        isUploadModalOpen={isUploadModalOpen}
-        handleCloseUploadModal={handleCloseUploadModal}
+        isUploadModalOpen={isModalOpen}
+        handleCloseUploadModal={handleCloseModal}
       />
 
       <UserDropDown modalUser={modalUser} menuRef={menuRef} />

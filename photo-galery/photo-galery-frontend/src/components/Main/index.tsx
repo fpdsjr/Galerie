@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import heroImage from '../../assets/hero.svg';
 import { Container, TextContainer } from './styles';
 
 function Main() {
+  const navigate = useNavigate();
   return (
     <Container>
       <TextContainer>
@@ -13,8 +15,12 @@ function Main() {
           friends with just one click.
         </p>
         <div>
-          <button type="button">Log in</button>
-          <button type="button">Sign up</button>
+          <button type="button" onClick={() => navigate('/login')}>
+            Log in
+          </button>
+          <button type="button" onClick={() => navigate('/signup')}>
+            Sign up
+          </button>
         </div>
       </TextContainer>
       <div>

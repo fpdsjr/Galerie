@@ -21,7 +21,7 @@ function Header({
 }: IHeaderProps) {
   const { isHome } = usePath();
 
-  function uploadHeader() {
+  function mainHeader() {
     return (
       <>
         <h1>Galerie</h1>
@@ -38,7 +38,7 @@ function Header({
   return (
     <Container>
       {isHome ? (
-        uploadHeader()
+        mainHeader()
       ) : (
         <>
           <h1>Galerie</h1>

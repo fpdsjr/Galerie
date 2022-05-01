@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthProvider/useAuth';
-import { Container, ImageContainer, TextContainer } from './styles';
+import { Container, ImageContainer, TextContainer, JoinButton } from './styles';
 
 function SignUp() {
   const [firstName, setfirstName] = useState<string>('');
@@ -63,11 +63,14 @@ function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="button" onClick={handleSignup}>
+        <JoinButton type="button" onClick={() => handleSignup}>
           Join
-        </button>
+        </JoinButton>
         <p>
-          Already have an account? <strong>Login</strong>
+          Already have an account?{' '}
+          <button type="button" onClick={() => navigate('/login')}>
+            Login
+          </button>
         </p>
       </TextContainer>
     </Container>

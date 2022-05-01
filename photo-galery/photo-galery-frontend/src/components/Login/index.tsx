@@ -22,7 +22,7 @@ function Login() {
     }
   }
 
-  const dont = "Don't";
+  const dontHaveAccount = "Don't have an account?";
 
   return (
     <Container>
@@ -52,7 +52,7 @@ function Login() {
           Login
         </button>
         <p>
-          {dont} have an account? <strong>Join</strong>
+          ${dontHaveAccount} <strong>Join</strong>
         </p>
       </div>
     </Container>

@@ -5,6 +5,8 @@ import { AuthenticateUserController } from './useCases/authenticateUser/Authenti
 import { AuthenticateUserService } from './useCases/authenticateUser/AuthenticateUser.Service';
 import { CreateUserController } from './useCases/createUser/CreateUser.Controller';
 import { CreateUserService } from './useCases/createUser/CreateUser.Service';
+import { GetUserInfoController } from './useCases/getUserInfo/GetUserInfo.Controller';
+import { GetUserInfoService } from './useCases/getUserInfo/GetUserInfo.Service';
 import { ListAllUserController } from './useCases/listAllUserImage/ListAllUserImage.Controller';
 import { ListAllUserImageService } from './useCases/listAllUserImage/ListAllUserImage.Service';
 
@@ -14,12 +16,14 @@ import { ListAllUserImageService } from './useCases/listAllUserImage/ListAllUser
     CreateUserController,
     AuthenticateUserController,
     ListAllUserController,
+    GetUserInfoController,
   ],
   providers: [
     CreateUserService,
     AuthenticateUserService,
     JwtStrategy,
     ListAllUserImageService,
+    GetUserInfoService,
   ],
 })
 export class AccountModule {}

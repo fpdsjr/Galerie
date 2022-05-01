@@ -12,7 +12,7 @@ class ListAllUserController {
   constructor(private listAllUserImageService: ListAllUserImageService) {}
 
   @UseGuards(AuthGuard('jwt'))
-  @Get('listimages')
+  @Get('list/images')
   async handle(@Req() req: Request) {
     const { sub } = req.user as ISub;
 

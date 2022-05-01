@@ -2,22 +2,16 @@
 import { useEffect, useState } from 'react';
 
 import { ImageInfoProvider } from '../../context/ImageInfoProvider';
+import useHandleModal from '../../hooks/useHandleModal';
 import { Api } from '../../services/api';
 import ImageModal from '../ImageModal';
 import Thumbnail from '../Thumbnail';
 import { Container } from './styles';
 
 function Gallery() {
-  const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
   const [images, setImages] = useState([]);
 
-  function handleOpenUploadModal() {
-    setIsImageModalOpen(true);
-  }
-
-  function handleCloseUploadModal() {
-    setIsImageModalOpen(false);
-  }
+  const { isModalOpen, handleOpenClose, handleCloseModal } = useHandleModal();
 
   async function fetchImages() {
     const { data } = await Api.get('/list/images');
@@ -39,12 +33,12 @@ function Gallery() {
           <Thumbnail
             key={id}
             src={url}
-            handleOpenUploadModal={handleOpenUploadModal}
+            handleOpenImageModal={handleOpenClose}
           />
         ))}
         <ImageModal
-          isImageModalOpen={isImageModalOpen}
-          handleCloseUploadModal={handleCloseUploadModal}
+          isImageModalOpen={isModalOpen}
+          handleCloseImageModal={handleCloseModal}
         />
       </Container>
     </ImageInfoProvider>

@@ -37,6 +37,7 @@ export const Container = styled.div`
       height: 2.5rem;
       border-radius: 0.25rem;
       border: 1px solid #d7d7d7;
+      padding: 0.5rem;
     }
     button {
       font-weight: 700;

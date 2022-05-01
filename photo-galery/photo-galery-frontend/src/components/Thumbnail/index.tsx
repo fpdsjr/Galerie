@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 
+import { useImage } from '../../context/ImageInfoProvider/useImage';
 import { Image, ImageContainer } from './styles';
 
 interface IThumbnailProps {
@@ -27,7 +28,10 @@ const imageVariants = {
   hover: { scale: 1.1 },
 };
 
-function Thumbnail({ id, i, handleOpenUploadModal, src }: IThumbnailProps) {
+function Thumbnail({ handleOpenUploadModal, src }: IThumbnailProps) {
+  const ImageInfo = useImage();
+  const { setImageInfo } = ImageInfo;
+
   return (
     <motion.div variants={thumbnailVariants}>
       <ImageContainer
@@ -35,7 +39,10 @@ function Thumbnail({ id, i, handleOpenUploadModal, src }: IThumbnailProps) {
         variants={frameVariants}
         transition={transition}>
         <Image
-          onClick={() => handleOpenUploadModal()}
+          onClick={() => {
+            handleOpenUploadModal();
+            setImageInfo({ src });
+          }}
           src={src}
           alt="The Barbican"
           variants={imageVariants}

@@ -2,7 +2,10 @@
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
 
 interface IImageInfo {
-  src: string;
+  short_url: string;
+  name: string;
+  key: string;
+  url: string;
 }
 
 interface IAuthProvider {

@@ -10,12 +10,19 @@ import {
   imageVariants,
 } from './styles';
 
-interface IThumbnailProps {
-  handleOpenImageModal: () => void;
-  src: string;
+interface IImageInfos {
+  short_url: string;
+  name: string;
+  key: string;
+  url: string;
 }
 
-function Thumbnail({ handleOpenImageModal, src }: IThumbnailProps) {
+interface IThumbnailProps {
+  handleOpenImageModal: () => void;
+  imageInfos: IImageInfos;
+}
+
+function Thumbnail({ handleOpenImageModal, imageInfos }: IThumbnailProps) {
   const { setImageInfo } = useImage();
 
   return (
@@ -27,10 +34,10 @@ function Thumbnail({ handleOpenImageModal, src }: IThumbnailProps) {
         <Image
           onClick={() => {
             handleOpenImageModal();
-            setImageInfo({ src });
+            setImageInfo(imageInfos);
           }}
-          src={src}
-          alt="The Barbican"
+          src={imageInfos.url}
+          alt={imageInfos.name}
           variants={imageVariants}
           transition={transition}
         />

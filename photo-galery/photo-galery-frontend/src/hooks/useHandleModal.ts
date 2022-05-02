@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function useHandleModal() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  function handleOpenClose() {
+  function handleOpenModal() {
     setIsModalOpen(true);
   }
 
@@ -13,7 +13,7 @@ export default function useHandleModal() {
 
   return {
     isModalOpen,
-    handleOpenClose,
+    handleOpenModal,
     handleCloseModal,
   };
 }

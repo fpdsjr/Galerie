@@ -48,7 +48,6 @@ export class UploadImageService {
         },
       });
 
-      promises.unlink(path);
       return createPhoto;
     } catch (err) {
       console.log(err.message);

@@ -11,7 +11,7 @@ import { Container } from './styles';
 function Gallery() {
   const [images, setImages] = useState([]);
 
-  const { isModalOpen, handleOpenClose, handleCloseModal } = useHandleModal();
+  const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
   async function fetchImages() {
     const { data } = await Api.get('/list/images');
@@ -20,7 +20,7 @@ function Gallery() {
 
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <ImageInfoProvider>
@@ -29,11 +29,11 @@ function Gallery() {
         animate="enter"
         exit="exit"
         variants={{ exit: { transition: { staggerChildren: 0.1 } } }}>
-        {images.map(({ id, url }) => (
+        {images.map(({ id, url, name, short_url, key }) => (
           <Thumbnail
             key={id}
-            src={url}
-            handleOpenImageModal={handleOpenClose}
+            imageInfos={{ url, name, short_url, key }}
+            handleOpenImageModal={handleOpenModal}
           />
         ))}
         <ImageModal

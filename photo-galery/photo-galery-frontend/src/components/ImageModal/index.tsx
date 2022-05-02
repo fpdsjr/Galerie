@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { saveAs } from 'file-saver';
 import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
 import { FcCheckmark } from 'react-icons/fc';
+import { FiDownload } from 'react-icons/fi';
 import { IoIosShareAlt } from 'react-icons/io';
 import Modal from 'react-modal';
 import { useCopyToClipboard } from 'react-use';
 
 import { useImage } from '../../context/ImageInfoProvider/useImage';
-import { Container, ButtonsContainer, ModalImage, ShareButton } from './styles';
+import { Api } from '../../services/api';
+import { Container, ButtonsContainer, ModalImage } from './styles';
 
 interface IImageModalProps {
   isImageModalOpen: boolean;
@@ -18,7 +22,6 @@ function ImageModal({
   handleCloseImageModal,
 }: IImageModalProps) {
   const [imageClick, setImageClick] = useState(false);
-  const [text, setText] = useState('');
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const { ImageInfo } = useImage();
@@ -27,22 +30,14 @@ function ImageModal({
     setImageClick(!imageClick);
   }
 
-  function handleClipBoardText() {
-    setText(
-      'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
-    );
-  }
-
   const handleDownload = () => {
-    saveAs(
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/200px-PNG_transparency_demonstration_1.png',
-      'image/*',
-    );
+    saveAs(ImageInfo!.url, 'image/*');
   };
 
-  useEffect(() => {
-    handleClipBoardText();
-  }, []);
+  async function handleDelete() {
+    await Api.post('/delete', { key: ImageInfo?.key });
+    handleCloseImageModal();
+  }
 
   useEffect(() => {
     copyToClipboard('');
@@ -58,23 +53,32 @@ function ImageModal({
       onRequestClose={handleCloseImageModal}>
       <Container>
         <ButtonsContainer>
-          <ShareButton type="button" onClick={() => copyToClipboard(text)}>
-            {state.value ? (
-              <FcCheckmark size={20} />
-            ) : (
-              <IoIosShareAlt size={20} />
-            )}
-            {state.value ? 'Copied' : 'Share'}
-          </ShareButton>
-
-          <button type="button" onClick={handleDownload}>
-            Download
+          <button type="button" onClick={handleDelete}>
+            <AiFillDelete size={20} />
+            Delete
           </button>
+          <div>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(ImageInfo!.short_url)}>
+              {state.value ? (
+                <FcCheckmark size={20} />
+              ) : (
+                <IoIosShareAlt size={20} />
+              )}
+              {state.value ? 'Copied' : 'Share'}
+            </button>
+
+            <button type="button" onClick={handleDownload}>
+              <FiDownload size={20} />
+              Download
+            </button>
+          </div>
         </ButtonsContainer>
         <ModalImage
           imageClick={imageClick}
           onClick={() => handleImageClick()}
-          src={ImageInfo?.src}
+          src={ImageInfo?.url}
           alt="alt"
         />
       </Container>

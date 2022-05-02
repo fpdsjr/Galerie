@@ -24,6 +24,7 @@ export const imageVariants = {
 export const Image = styled(motion.img)`
   width: 100%;
   z-index: -1;
+  cursor: pointer;
 `;
 
 export const ImageContainer = styled(motion.div)`

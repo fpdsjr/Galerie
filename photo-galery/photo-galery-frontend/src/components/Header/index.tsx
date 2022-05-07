@@ -5,18 +5,18 @@ import {
   Container,
   HeaderDefaultButton,
   MenuImageDropDown,
-  UploadBotton,
+  UploadButton,
 } from './styles';
 
 interface IHeaderProps {
   handleOpenUploadModal: () => void;
-  toogleModalUser: () => void;
+  toggleModalUser: () => void;
   userElement: React.Ref<HTMLDivElement>;
 }
 
 function Header({
   handleOpenUploadModal,
-  toogleModalUser,
+  toggleModalUser,
   userElement,
 }: IHeaderProps) {
   const { isHome } = usePath();
@@ -26,10 +26,10 @@ function Header({
       <>
         <h1>Galerie</h1>
         <div>
-          <UploadBotton type="button" onClick={handleOpenUploadModal}>
+          <UploadButton type="button" onClick={handleOpenUploadModal}>
             Upload
-          </UploadBotton>
-          <MenuImageDropDown ref={userElement} onClick={toogleModalUser} />
+          </UploadButton>
+          <MenuImageDropDown ref={userElement} onClick={toggleModalUser} />
         </div>
       </>
     );

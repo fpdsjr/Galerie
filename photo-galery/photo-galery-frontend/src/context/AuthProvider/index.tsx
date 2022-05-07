@@ -49,6 +49,7 @@ export function AuthProvider({ children }: IAuthProvider) {
 
     setUser(payload);
     setUserLocalStorage(payload);
+    return response;
   }
 
   async function logout() {

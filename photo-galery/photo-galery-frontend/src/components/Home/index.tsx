@@ -15,7 +15,7 @@ function Home() {
   const { menuRef, userElement } = useCloseMenuDropDown({ setModalUser });
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
-  function toogleModalUser() {
+  function toggleModalUser() {
     setModalUser(!modalUser);
   }
 
@@ -23,7 +23,7 @@ function Home() {
     <Container>
       <Header
         handleOpenUploadModal={handleOpenModal}
-        toogleModalUser={toogleModalUser}
+        toggleModalUser={toggleModalUser}
         userElement={userElement}
       />
       <UploadModal

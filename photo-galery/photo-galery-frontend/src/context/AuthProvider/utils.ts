@@ -22,16 +22,12 @@ export function getUserLocalStorage() {
 }
 
 export async function LoginRequest(email: string, password: string) {
-  try {
-    const request = await Api.post('/user/authenticate', {
-      email,
-      password,
-    });
+  const request = await Api.post('/user/authenticate', {
+    email,
+    password,
+  });
 
-    return request.data;
-  } catch (err) {
-    console.log(err);
-  }
+  return request.data;
 }
 
 export async function CreateUser(

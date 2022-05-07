@@ -53,7 +53,7 @@ export const MenuImageDropDown = styled.div`
   }
 `;
 
-export const UploadBotton = styled.button`
+export const UploadButton = styled.button`
   border-radius: 10px;
   border: none;
   font-size: 1.1rem;

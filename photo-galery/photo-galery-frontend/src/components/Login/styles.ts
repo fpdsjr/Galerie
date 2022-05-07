@@ -21,15 +21,6 @@ export const Container = styled.div`
     }
 
     strong {
-      cursor: pointer;
-      font-weight: 600;
-      text-decoration: underline;
-      color: #111111;
-      transition: all 0.2s;
-      &:hover {
-        transition: all 0.2s ease-in-out 0s;
-        color: #cb8805;
-      }
     }
 
     input {
@@ -39,21 +30,38 @@ export const Container = styled.div`
       border: 1px solid #d7d7d7;
       padding: 0.5rem;
     }
-    button {
-      font-weight: 700;
-      height: 2.5rem;
-      border-radius: 0.25rem;
-      background: #fec001;
-      color: #273339;
-      border: 1px solid #d7d7d7;
-      text-align: center;
-      transition: all 0.2s;
+  }
+`;
 
-      &:hover {
-        transition: all 0.2s ease-in-out 0s;
-        filter: brightness(0.8);
-      }
-    }
+export const JoinButton = styled.button`
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  text-decoration: underline;
+  color: #111111;
+  border: 0;
+  text-align: center;
+  transition: all 0.2s;
+
+  &:hover {
+    transition: all 0.2s ease-in-out 0s;
+    color: #cb8805;
+  }
+`;
+
+export const ButtonContainer = styled.button`
+  font-weight: 700;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  background: #fec001;
+  color: #273339;
+  border: 1px solid #d7d7d7;
+  text-align: center;
+  transition: all 0.2s;
+
+  &:hover {
+    transition: all 0.2s ease-in-out 0s;
+    filter: brightness(0.8);
   }
 `;
 

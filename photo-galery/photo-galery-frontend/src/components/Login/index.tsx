@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import loginSvgAnimate from '../../assets/login-animation.svg';
 import { useAuth } from '../../context/AuthProvider/useAuth';
-import { Container, ImageContainer } from './styles';
+import {
+  Container,
+  ImageContainer,
+  ButtonContainer,
+  JoinButton,
+} from './styles';
 
 function Login() {
   const [email, setEmail] = useState<string>('');
@@ -20,6 +25,10 @@ function Login() {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  function handleSignUpRedirect() {
+    navigate('/signup');
   }
 
   const dontHaveAccount = "Don't have an account?";
@@ -48,11 +57,12 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="button" onClick={handleSubmit}>
+        <ButtonContainer type="button" onClick={(e) => handleSubmit(e)}>
           Login
-        </button>
+        </ButtonContainer>
         <p>
-          ${dontHaveAccount} <strong>Join</strong>
+          {dontHaveAccount}{' '}
+          <JoinButton onClick={() => handleSignUpRedirect()}>Join</JoinButton>
         </p>
       </div>
     </Container>

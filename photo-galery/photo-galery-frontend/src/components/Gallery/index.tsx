@@ -2,20 +2,28 @@
 import { useEffect, useState } from 'react';
 
 import { ImageInfoProvider } from '../../context/ImageInfoProvider';
+import useFetch from '../../hooks/useFetch';
 import useHandleModal from '../../hooks/useHandleModal';
-import { Api } from '../../services/api';
 import ImageModal from '../ImageModal';
 import Thumbnail from '../Thumbnail';
 import { Container } from './styles';
 
+interface IListImagesRequest {
+  id: number;
+  url: string;
+  name: string;
+  short_url: string;
+  key: string;
+}
+
 function Gallery() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<IListImagesRequest[]>([]);
 
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
   async function fetchImages() {
-    const { data } = await Api.get('/list/images');
-    setImages(data);
+    const { axiosResponse } = useFetch(0, '/list/images');
+    setImages(axiosResponse?.data);
   }
 
   useEffect(() => {

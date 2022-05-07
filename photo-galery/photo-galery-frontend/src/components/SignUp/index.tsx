@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthProvider/useAuth';
 import { Container, ImageContainer, TextContainer, JoinButton } from './styles';
 
 function SignUp() {
-  const [firstName, setfirstName] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -13,11 +13,11 @@ function SignUp() {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  async function handleSignup(e: SyntheticEvent) {
+  async function handleSignUp(e: SyntheticEvent) {
     e.preventDefault();
 
     try {
-      await auth.createUser({ firstName, lastName, email, password });
+      auth.createUser({ firstName, lastName, email, password });
       navigate('/home');
     } catch (err) {
       console.log(err);
@@ -35,7 +35,7 @@ function SignUp() {
             <input
               id="firstName"
               value={firstName}
-              onChange={(e) => setfirstName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </label>
           <label htmlFor="lastName">
@@ -63,7 +63,7 @@ function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <JoinButton type="button" onClick={() => handleSignup}>
+        <JoinButton type="button" onClick={(e) => handleSignUp(e)}>
           Join
         </JoinButton>
         <p>

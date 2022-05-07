@@ -1,40 +1,37 @@
-import React, { SyntheticEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
+import React, { useState } from 'react';
 
 import loginSvgAnimate from '../../assets/login-animation.svg';
 import { useAuth } from '../../context/AuthProvider/useAuth';
 import LoginError from '../LoginError';
-import {
-  Container,
-  LoginContainer,
-  ImageContainer,
-  ButtonContainer,
-  JoinButton,
-} from './styles';
+import LoginInput from '../LoginInput';
+import { Container, LoginContainer, ImageContainer } from './styles';
+
+interface IValues {
+  email: string;
+  password: string;
+}
 
 function Login() {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [invalidUser, setInvalidUser] = useState(false);
 
   const auth = useAuth();
-  const navigate = useNavigate();
 
-  async function handleSubmit(e: SyntheticEvent) {
-    e.preventDefault();
+  async function handleSubmit(values: IValues) {
+    console.log(values);
 
-    try {
-      await auth.authenticate(email, password);
+    // try {
+    //   await auth.authenticate(email, password);
 
-      navigate('/home');
+    //   navigate('/home');
 
-      setInvalidUser(false);
-    } catch (err) {
-      setInvalidUser(true);
-    }
+    //   setInvalidUser(false);
+    // } catch (err) {
+    //   setInvalidUser(true);
+    // }
   }
-
-  const dontHaveAccount = "Don't have an account?";
 
   return (
     <Container>
@@ -43,33 +40,7 @@ function Login() {
         <ImageContainer>
           <img src={loginSvgAnimate} alt="login" />
         </ImageContainer>
-        <div>
-          <h1>Login</h1>
-          <p>Welcome Back</p>
-          <label htmlFor="email">
-            <span>Email</span>
-            <input
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="password">
-            <span>Password</span>
-            <input
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <ButtonContainer type="button" onClick={(e) => handleSubmit(e)}>
-            Login
-          </ButtonContainer>
-          <p>
-            {dontHaveAccount}{' '}
-            <JoinButton onClick={() => navigate('/signup')}>Join</JoinButton>
-          </p>
-        </div>
+        <LoginInput handleSubmit={handleSubmit} />
       </LoginContainer>
     </Container>
   );

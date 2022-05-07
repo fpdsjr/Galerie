@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useAuth } from '../../context/AuthProvider/useAuth';
-import { Api } from '../../services/api';
+import useFetch from '../../hooks/useFetch';
 import { Container, DropDownMenuContent, Square } from './styles';
 
 interface IUserDropDown {
@@ -19,9 +19,10 @@ function UserDropDown({ modalUser, menuRef }: IUserDropDown) {
   const auth = useAuth();
 
   async function fetchUserInfo() {
-    const { data } = await Api.get('/user/info');
+    const { axiosResponse } = useFetch(1, '/user/info');
+    console.log(axiosResponse);
 
-    setUserInfo(data);
+    setUserInfo(axiosResponse?.data);
   }
 
   useEffect(() => {

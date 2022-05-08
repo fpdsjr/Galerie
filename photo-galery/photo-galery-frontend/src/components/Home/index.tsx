@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import heroImage from '../../assets/hero.svg';
+import { useAuth } from '../../context/AuthProvider/useAuth';
 import Header from '../Header';
 import { Container, TextContainer } from './styles';
 
 function Home() {
   const navigate = useNavigate();
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (auth.verifyUser()) {
+      navigate('/home');
+    }
+  }, []);
 
   return (
     <>

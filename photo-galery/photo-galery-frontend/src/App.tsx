@@ -3,10 +3,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Header from './components/Header';
+import GalleryMain from './components/GalleryMain';
 import Home from './components/Home';
 import Login from './components/Login';
-import Main from './components/Main';
 import { Redirect } from './components/Redirect';
 import SignUp from './components/SignUp';
 import { AuthProvider } from './context/AuthProvider';
@@ -20,21 +19,13 @@ function App() {
       <AnimatePresence exitBeforeEnter initial={false}>
         <BrowserRouter>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <div>
-                  <Header />
-                  <Main />
-                </div>
-              }
-            />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/home"
               element={
                 <Redirect>
-                  <Home />
+                  <GalleryMain />
                 </Redirect>
               }
             />

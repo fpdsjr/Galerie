@@ -35,7 +35,7 @@ export const Container = styled.div`
 export const ErrorMessage = styled.span`
   position: absolute;
   margin-top: 4px;
-  color: red !important;
+  color: #b20600 !important;
 `;
 
 export const ButtonContainer = styled.button`

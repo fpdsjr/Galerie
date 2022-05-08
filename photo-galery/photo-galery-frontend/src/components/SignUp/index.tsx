@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthProvider/useAuth';
@@ -30,6 +31,12 @@ function SignUp() {
       console.log(err);
     }
   }
+
+  useEffect(() => {
+    if (auth.verifyUser()) {
+      navigate('/home');
+    }
+  }, []);
 
   return (
     <Container>

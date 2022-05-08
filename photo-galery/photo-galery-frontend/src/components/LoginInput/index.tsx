@@ -23,7 +23,10 @@ function LoginInput({ handleSubmit }: ILoginInputProps) {
   return (
     <Container>
       <Formik
-        onSubmit={handleSubmit}
+        onSubmit={(values: IValues, { resetForm }) => {
+          handleSubmit(values);
+          resetForm();
+        }}
         validationSchema={LoginSchema}
         initialValues={{
           email: '',
@@ -46,7 +49,9 @@ function LoginInput({ handleSubmit }: ILoginInputProps) {
               <label htmlFor="password">
                 <span>Password</span>
                 <Field id="password" name="password" type="password" />
-                <ErrorMessage>{errors.password}</ErrorMessage>
+                {errors.password && touched.password && (
+                  <ErrorMessage>{errors.password}</ErrorMessage>
+                )}
               </label>
               <ButtonContainer type="button" onClick={() => handleSubmit()}>
                 Login

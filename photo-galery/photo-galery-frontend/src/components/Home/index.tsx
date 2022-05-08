@@ -1,40 +1,37 @@
-/* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import useCloseMenuDropDown from '../../hooks/useCloseMenuDropDown';
-import useHandleModal from '../../hooks/useHandleModal';
-import Gallery from '../Gallery';
+import heroImage from '../../assets/hero.svg';
 import Header from '../Header';
-import UploadModal from '../UploadModal';
-import UserDropDown from '../UserDropDown';
-import { Container, Footer } from './styles';
+import { Container, TextContainer } from './styles';
 
 function Home() {
-  const [modalUser, setModalUser] = useState(false);
-
-  const { menuRef, userElement } = useCloseMenuDropDown({ setModalUser });
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
-
-  function toggleModalUser() {
-    setModalUser(!modalUser);
-  }
+  const navigate = useNavigate();
 
   return (
-    <Container>
-      <Header
-        handleOpenUploadModal={handleOpenModal}
-        toggleModalUser={toggleModalUser}
-        userElement={userElement}
-      />
-      <UploadModal
-        isUploadModalOpen={isModalOpen}
-        handleCloseUploadModal={handleCloseModal}
-      />
-
-      <UserDropDown modalUser={modalUser} menuRef={menuRef} />
-      <Gallery />
-      <Footer />
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <TextContainer>
+          <h1>Your private photos gallery</h1>
+          <p>
+            Upload your images, download it whenever you want, and share with
+            your friends with just one click.
+          </p>
+          <div>
+            <button type="button" onClick={() => navigate('/login')}>
+              Log in
+            </button>
+            <button type="button" onClick={() => navigate('/signup')}>
+              Sign up
+            </button>
+          </div>
+        </TextContainer>
+        <div>
+          <img src={heroImage} alt="hero img" />
+        </div>
+      </Container>
+    </>
   );
 }
 

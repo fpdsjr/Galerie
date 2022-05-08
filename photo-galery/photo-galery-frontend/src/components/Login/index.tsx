@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import loginSvgAnimate from '../../assets/login-animation.svg';
 import { useAuth } from '../../context/AuthProvider/useAuth';
@@ -18,19 +19,18 @@ function Login() {
   const [invalidUser, setInvalidUser] = useState(false);
 
   const auth = useAuth();
+  const navigate = useNavigate();
 
-  async function handleSubmit(values: IValues) {
-    console.log(values);
+  async function handleSubmit({ email, password }: IValues) {
+    try {
+      await auth.authenticate(email, password);
 
-    // try {
-    //   await auth.authenticate(email, password);
+      navigate('/home');
 
-    //   navigate('/home');
-
-    //   setInvalidUser(false);
-    // } catch (err) {
-    //   setInvalidUser(true);
-    // }
+      setInvalidUser(false);
+    } catch (err) {
+      setInvalidUser(true);
+    }
   }
 
   return (

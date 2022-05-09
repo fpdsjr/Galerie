@@ -16,13 +16,18 @@ interface IListImagesRequest {
   key: string;
 }
 
-function Gallery() {
+interface IGalleryProps {
+  setUserHasImage: (args: boolean) => void;
+}
+
+function Gallery({ setUserHasImage }: IGalleryProps) {
   const [images, setImages] = useState<IListImagesRequest[]>([]);
 
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
   async function fetchImages() {
     const { axiosResponse } = useFetch(0, '/list/images');
+    setUserHasImage(!!axiosResponse?.data.length);
     setImages(axiosResponse?.data);
   }
 

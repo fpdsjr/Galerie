@@ -11,7 +11,11 @@ function Home() {
   const auth = useAuth();
 
   useEffect(() => {
-    if (auth.verifyUser()) {
+    const userAlreadyLogged = auth.verifyUser();
+
+    if (!userAlreadyLogged) {
+      navigate('/');
+    } else {
       navigate('/home');
     }
   }, []);

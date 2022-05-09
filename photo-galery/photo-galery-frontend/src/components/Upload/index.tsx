@@ -6,7 +6,12 @@ import { useDropzone } from 'react-dropzone';
 
 import uploadSvg from '../../assets/upload-animation.svg';
 import UploadedList from '../UploadedList';
-import { Container, DropzoneContainer } from './styles';
+import {
+  Container,
+  DropzoneContainer,
+  DoneButton,
+  LeftElementContainer,
+} from './styles';
 
 interface IPreviewUploadList {
   file: File;
@@ -58,22 +63,26 @@ function Upload() {
 
   return (
     <Container>
-      <DropzoneContainer
-        {...getRootProps()}
-        fileLength={filesTobeUploaded.length}>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the images here ...</p>
-        ) : (
-          <p>Drag drop some images here, or click to select</p>
-        )}
-        <img src={uploadSvg} alt="upload" />
-      </DropzoneContainer>
-
       <UploadedList
         filesTobeUploaded={filesTobeUploaded}
         deleteImage={deleteImage}
       />
+      <LeftElementContainer fileLength={filesTobeUploaded.length}>
+        <DropzoneContainer
+          {...getRootProps()}
+          fileLength={filesTobeUploaded.length}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop the images here ...</p>
+          ) : (
+            <p>Drag drop some images here, or click to select</p>
+          )}
+          <img src={uploadSvg} alt="upload" />
+        </DropzoneContainer>
+        <DoneButton type="button" fileLength={filesTobeUploaded.length}>
+          Done
+        </DoneButton>
+      </LeftElementContainer>
     </Container>
   );
 }

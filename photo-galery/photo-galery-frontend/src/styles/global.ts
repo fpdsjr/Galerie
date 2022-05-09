@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import blobMainGallery from '../assets/main-gallery-blob.svg';
+
 export const GlobalStyle = createGlobalStyle`
   :root {
     --baby-blue: #70d6ffff;
@@ -93,9 +95,10 @@ export const GlobalStyle = createGlobalStyle`
 
   .react-modal-upload-modal {
     margin: 0 auto;
+    margin-top: 50px;
     width: 70%;
     max-width: 88%;
-    height: 86%;
+    height: 88%;
     border-radius: 0.25rem;
     background-color: #f0f2f5;
     overflow: auto;
@@ -104,5 +107,4 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-upload-modal::-webkit-scrollbar {
     display: none;
   }
-
-  `;
+`;

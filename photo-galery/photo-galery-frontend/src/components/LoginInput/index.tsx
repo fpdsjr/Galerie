@@ -53,7 +53,7 @@ function LoginInput({ handleSubmit }: ILoginInputProps) {
                   <ErrorMessage>{errors.password}</ErrorMessage>
                 )}
               </label>
-              <ButtonContainer type="button" onClick={() => handleSubmit()}>
+              <ButtonContainer type="submit" onClick={() => handleSubmit()}>
                 Login
               </ButtonContainer>
               <p>

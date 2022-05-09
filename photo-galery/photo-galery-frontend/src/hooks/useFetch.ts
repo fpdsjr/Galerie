@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 
 import { Api } from '../services/api';
 
-const ApiMethods = [Api.get, Api.post, Api.put, Api.patch, Api.delete];
-
 export default function useFetch(method: number, url: string) {
   const [axiosResponse, setAxiosResponse] = useState<AxiosResponse>();
+  const ApiMethods = [Api.get, Api.post, Api.put, Api.patch, Api.delete];
 
   async function handleFetch() {
     const response = await ApiMethods[method](`${url}`);

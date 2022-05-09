@@ -24,6 +24,7 @@ interface IContext extends IUser {
   authenticate: (email: string, password: string) => Promise<void>;
   createUser: (create: ICreateUser) => void;
   logout: () => void;
+  verifyUser: () => boolean;
 }
 
 interface IAuthProvider {
@@ -69,6 +70,12 @@ export function AuthProvider({ children }: IAuthProvider) {
     }
   }
 
+  function verifyUser() {
+    const user = getUserLocalStorage();
+
+    return !!user.token;
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -76,6 +83,7 @@ export function AuthProvider({ children }: IAuthProvider) {
         authenticate,
         createUser,
         logout,
+        verifyUser,
       }}>
       {children}
     </AuthContext.Provider>

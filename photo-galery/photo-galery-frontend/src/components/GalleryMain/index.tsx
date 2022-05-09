@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import useCloseMenuDropDown from '../../hooks/useCloseMenuDropDown';
 import useHandleModal from '../../hooks/useHandleModal';
+import FirstSteps from '../FirstSteps';
 import Gallery from '../Gallery';
 import HeaderGallery from '../HeaderGallery';
 import UploadModal from '../UploadModal';
@@ -11,6 +12,7 @@ import { Container, Footer } from './styles';
 
 function GalleryMain() {
   const [modalUser, setModalUser] = useState(false);
+  const [userHasImage, setUserHasImage] = useState(false);
 
   const { menuRef, userElement } = useCloseMenuDropDown({ setModalUser });
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
@@ -32,7 +34,12 @@ function GalleryMain() {
       />
 
       <UserDropDown modalUser={modalUser} menuRef={menuRef} />
-      <Gallery />
+      {userHasImage ? (
+        <Gallery setUserHasImage={setUserHasImage} />
+      ) : (
+        <FirstSteps />
+      )}
+
       <Footer />
     </Container>
   );

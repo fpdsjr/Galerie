@@ -8,7 +8,7 @@ import Gallery from '../Gallery';
 import HeaderGallery from '../HeaderGallery';
 import UploadModal from '../UploadModal';
 import UserDropDown from '../UserDropDown';
-import { Container, Footer } from './styles';
+import { Container } from './styles';
 
 function GalleryMain() {
   const [modalUser, setModalUser] = useState(false);
@@ -39,8 +39,6 @@ function GalleryMain() {
       ) : (
         <FirstSteps />
       )}
-
-      <Footer />
     </Container>
   );
 }

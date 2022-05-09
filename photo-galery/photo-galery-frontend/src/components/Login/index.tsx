@@ -34,7 +34,11 @@ function Login() {
   }
 
   useEffect(() => {
-    if (auth.verifyUser()) {
+    const userAlreadyLogged = auth.verifyUser();
+
+    if (!userAlreadyLogged) {
+      navigate('/login');
+    } else {
       navigate('/home');
     }
   }, []);

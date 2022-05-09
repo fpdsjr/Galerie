@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   gap: 2rem;
   flex-flow: column wrap;

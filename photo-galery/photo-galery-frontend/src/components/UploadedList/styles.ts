@@ -48,7 +48,7 @@ export const PreviewContainer = styled.div`
 `;
 
 export const PreviewImage = styled.img`
-  width: 990px;
+  width: 980px;
   max-height: 600px;
   border-radius: 0.5rem;
   animation: 5s ${animateFilter} ease-in-out;

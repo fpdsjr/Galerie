@@ -33,7 +33,11 @@ function SignUp() {
   }
 
   useEffect(() => {
-    if (auth.verifyUser()) {
+    const userAlreadyLogged = auth.verifyUser();
+
+    if (!userAlreadyLogged) {
+      navigate('/signup');
+    } else {
       navigate('/home');
     }
   }, []);

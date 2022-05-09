@@ -4,12 +4,15 @@ export const Container = styled.div`
   display: flex;
   max-width: 1700px;
   margin: 0 auto;
+  max-height: 100%;
 
   div {
     width: 50%;
 
     img {
-      object-position: 50px;
+      height: 89vh;
+      object-position: 60px;
+      margin-top: 5px;
     }
   }
 `;

@@ -20,7 +20,6 @@ function UserDropDown({ modalUser, menuRef }: IUserDropDown) {
 
   async function fetchUserInfo() {
     const { axiosResponse } = useFetch(1, '/user/info');
-    console.log(axiosResponse);
 
     setUserInfo(axiosResponse?.data);
   }

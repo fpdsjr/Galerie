@@ -73,7 +73,7 @@ export function AuthProvider({ children }: IAuthProvider) {
   function verifyUser() {
     const user = getUserLocalStorage();
 
-    return !!user.token;
+    return !!user;
   }
 
   return (

@@ -15,26 +15,15 @@ interface IUserInfo {
 }
 
 function UserDropDown({ modalUser, menuRef }: IUserDropDown) {
-  const [userInfo, setUserInfo] = useState<IUserInfo>({} as IUserInfo);
   const auth = useAuth();
 
-  async function fetchUserInfo() {
-    const { axiosResponse } = useFetch(1, '/user/info');
-
-    setUserInfo(axiosResponse?.data);
-  }
-
-  useEffect(() => {
-    fetchUserInfo();
-  }, []);
-
-  const { firstName, lastName } = userInfo;
+  const { axiosResponse: userInfo } = useFetch<IUserInfo>('get', '/user/info');
 
   return (
     <Container ref={menuRef}>
       {modalUser ? (
         <DropDownMenuContent>
-          <h4>Olá {`${firstName} ${lastName}`}</h4>
+          <h4>Olá {`${userInfo?.firstName} ${userInfo?.lastName}`}</h4>
           <button type="button" onClick={auth.logout}>
             Logout
           </button>

@@ -1,16 +1,24 @@
-import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 
 import { Api } from '../services/api';
 
-export default function useFetch(method: number, url: string) {
-  const [axiosResponse, setAxiosResponse] = useState<AxiosResponse>();
-  const ApiMethods = [Api.get, Api.post, Api.put, Api.patch, Api.delete];
+const ApiRequest = {
+  post: Api.post,
+  get: Api.get,
+  delete: Api.delete,
+  patch: Api.patch,
+  put: Api.put,
+};
+
+type methodName = 'post' | 'get' | 'delete' | 'patch' | 'put';
+
+export default function useFetch<T = unknown>(method: methodName, url: string) {
+  const [axiosResponse, setAxiosResponse] = useState<T | null>(null);
 
   async function handleFetch() {
-    const response = await ApiMethods[method](`${url}`);
+    const response = await ApiRequest[method](url);
 
-    setAxiosResponse(response);
+    setAxiosResponse(response.data);
   }
 
   useEffect(() => {

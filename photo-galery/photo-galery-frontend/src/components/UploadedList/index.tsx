@@ -49,7 +49,7 @@ function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
   }, [filesTobeUploaded]);
 
   return (
-    <Container>
+    <Container fileLength={filesTobeUploaded.length}>
       {filesTobeUploaded.map(({ name, preview, id, uploaded }) => (
         <PreviewContainer key={id}>
           <PreviewImage src={preview} alt={name} />

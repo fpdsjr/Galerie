@@ -4,10 +4,9 @@ interface IProps {
   fileLength: number;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<IProps>`
   display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
+  gap: ${({ fileLength }) => (fileLength > 0 ? '1rem' : '0rem')};
   padding: 1rem;
 `;
 

@@ -62,7 +62,7 @@ function Upload() {
   }
 
   return (
-    <Container>
+    <Container fileLength={filesTobeUploaded.length}>
       <UploadedList
         filesTobeUploaded={filesTobeUploaded}
         deleteImage={deleteImage}

@@ -66,7 +66,7 @@ function SignUpInput({ handleSubmit }: ISignUpInputProps) {
               <ErrorMessage>{errors.password}</ErrorMessage>
             )}
           </label>
-          <JoinButton type="button" onClick={() => handleSubmit()}>
+          <JoinButton type="submit" onClick={() => handleSubmit()}>
             Join
           </JoinButton>
           <p>

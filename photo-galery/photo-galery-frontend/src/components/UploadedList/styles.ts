@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
+interface IProps {
+  fileLength: number;
+}
+
 const animateFilter = keyframes`
   0% {
     filter: brightness(0)
@@ -18,21 +22,23 @@ const animateFilter = keyframes`
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+export const Container = styled.div<IProps>`
+  width: ${({ fileLength }) => (fileLength > 0 ? '76%' : '0%')};
+  column-count: 2;
+  column-gap: 10px;
 `;
 
 export const PreviewContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin: 0;
   position: relative;
+  display: flex;
+  margin-bottom: 10px;
+  break-inside: avoid;
 
   button {
     position: absolute;
-    top: 30px;
-    left: 92%;
+    top: 22px;
+    right: 5px;
     width: 60px;
     opacity: 1;
     background: none;
@@ -48,16 +54,15 @@ export const PreviewContainer = styled.div`
 `;
 
 export const PreviewImage = styled.img`
-  width: 980px;
-  max-height: 600px;
+  width: 100%;
   border-radius: 0.5rem;
   animation: 5s ${animateFilter} ease-in-out;
 `;
 
 export const Loader = styled.img`
   position: absolute;
-  top: 35px;
-  left: 30px;
+  top: 25px;
+  left: 20px;
   width: 35px;
   height: 35px;
 `;

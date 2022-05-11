@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import blobMainGallery from '../assets/main-gallery-blob.svg';
-
 export const GlobalStyle = createGlobalStyle`
   :root {
     --baby-blue: #70d6ffff;
@@ -72,13 +70,15 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 0.25rem;
     background-color: #f0f2f5;
     border: none;
+    overflow: hidden;
   }
 
   .react-modal-image-modal-size {
     margin: 0 auto;
     width: 100%;
     max-width: 88%;
-    height: 100%;
+    padding-bottom: 5rem;
+    height: 100vh;
     border-radius: 0.25rem;
     background-color: #f0f2f5;
     overflow: scroll;
@@ -86,6 +86,8 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
   
+  
+
   .react-modal-image-modal-size:focus {
     outline: none;
   }

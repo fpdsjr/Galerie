@@ -1,14 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { conforms } from 'lodash';
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
-
-import useFetch from '../../hooks/useFetch';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
 
 interface IImageInfo {
   id: number;

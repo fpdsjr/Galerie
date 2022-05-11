@@ -11,6 +11,7 @@ import {
 } from './styles';
 
 interface IImageInfos {
+  id: number;
   short_url: string;
   name: string;
   key: string;

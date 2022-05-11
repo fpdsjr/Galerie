@@ -1,7 +1,17 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { conforms } from 'lodash';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
+
+import useFetch from '../../hooks/useFetch';
 
 interface IImageInfo {
+  id: number;
   short_url: string;
   name: string;
   key: string;
@@ -15,6 +25,8 @@ interface IAuthProvider {
 interface IContext {
   setImageInfo: Dispatch<SetStateAction<IImageInfo | undefined>>;
   ImageInfo: IImageInfo | undefined;
+  setDeletedId: (args: number | undefined) => void;
+  deletedId: number | undefined;
 }
 
 export const ImageInfoContext = createContext<IContext>({} as IContext);
@@ -22,8 +34,16 @@ export const ImageInfoContext = createContext<IContext>({} as IContext);
 export function ImageInfoProvider({ children }: IAuthProvider) {
   const [ImageInfo, setImageInfo] = useState<IImageInfo>();
 
+  const [deletedId, setDeletedId] = useState<number | undefined>(0);
+
   return (
-    <ImageInfoContext.Provider value={{ ImageInfo, setImageInfo }}>
+    <ImageInfoContext.Provider
+      value={{
+        ImageInfo,
+        setImageInfo,
+        setDeletedId,
+        deletedId,
+      }}>
       {children}
     </ImageInfoContext.Provider>
   );

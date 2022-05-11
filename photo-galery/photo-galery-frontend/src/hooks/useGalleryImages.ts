@@ -31,7 +31,6 @@ export function useGalleryImages(
   }, [isModalOpen]);
 
   useEffect(() => {
-    console.log(deletedId);
     const deleteImage = galleryImages?.filter(
       (image: IListImagesRequest) => image.id !== deletedId,
     );

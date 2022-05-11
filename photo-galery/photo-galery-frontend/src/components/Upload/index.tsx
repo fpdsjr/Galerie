@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/jsx-props-no-spreading */
 import { uniqueId } from 'lodash';
@@ -5,6 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import uploadSvg from '../../assets/upload-animation.svg';
+import { useImage } from '../../context/ImageInfoProvider/useImage';
 import UploadedList from '../UploadedList';
 import {
   Container,
@@ -21,7 +23,11 @@ interface IPreviewUploadList {
   uploaded: boolean;
 }
 
-function Upload() {
+interface IUploadProps {
+  handleCloseUploadModal: () => void;
+}
+
+function Upload({ handleCloseUploadModal }: IUploadProps) {
   const [uploadFiles, setUploadedFiles] = useState<File[]>([]);
   const [filesTobeUploaded, setFilesTobeUploaded] = useState<
     IPreviewUploadList[]
@@ -79,7 +85,12 @@ function Upload() {
           )}
           <img src={uploadSvg} alt="upload" />
         </DropzoneContainer>
-        <DoneButton type="button" fileLength={filesTobeUploaded.length}>
+        <DoneButton
+          type="button"
+          onClick={() => {
+            handleCloseUploadModal();
+          }}
+          fileLength={filesTobeUploaded.length}>
           Done
         </DoneButton>
       </LeftElementContainer>

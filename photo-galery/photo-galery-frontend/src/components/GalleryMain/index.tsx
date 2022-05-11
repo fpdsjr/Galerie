@@ -16,10 +16,14 @@ function GalleryMain() {
   const [modalUser, setModalUser] = useState(false);
 
   const { menuRef, userElement } = useCloseMenuDropDown({ setModalUser });
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
+  const {
+    isModalOpen: isUploadModalOpen,
+    handleOpenModal: handleOpenUploadModal,
+    handleCloseModal: handleCloseUploadModal,
+  } = useHandleModal();
 
   const { deletedId } = useImage();
-  const { galleryImages } = useGalleryImages(deletedId, isModalOpen);
+  const { galleryImages } = useGalleryImages(deletedId, isUploadModalOpen);
 
   function toggleModalUser() {
     setModalUser(!modalUser);
@@ -28,13 +32,13 @@ function GalleryMain() {
   return (
     <Container>
       <HeaderGallery
-        handleOpenUploadModal={handleOpenModal}
+        handleOpenUploadModal={handleOpenUploadModal}
         toggleModalUser={toggleModalUser}
         userElement={userElement}
       />
       <UploadModal
-        isUploadModalOpen={isModalOpen}
-        handleCloseUploadModal={handleCloseModal}
+        isUploadModalOpen={isUploadModalOpen}
+        handleCloseUploadModal={handleCloseUploadModal}
       />
 
       <UserDropDown modalUser={modalUser} menuRef={menuRef} />

@@ -17,7 +17,11 @@ interface IGalleryProps {
 }
 
 function Gallery({ galleryImages }: IGalleryProps) {
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
+  const {
+    isModalOpen: isImageModalOpen,
+    handleOpenModal: handleOpenImageModal,
+    handleCloseModal: handleCloseImageModal,
+  } = useHandleModal();
 
   return (
     <Container
@@ -29,12 +33,12 @@ function Gallery({ galleryImages }: IGalleryProps) {
         <Thumbnail
           key={id}
           imageInfos={{ id, url, name, short_url, key }}
-          handleOpenImageModal={handleOpenModal}
+          handleOpenImageModal={handleOpenImageModal}
         />
       ))}
       <ImageModal
-        isImageModalOpen={isModalOpen}
-        handleCloseImageModal={handleCloseModal}
+        isImageModalOpen={isImageModalOpen}
+        handleCloseImageModal={handleCloseImageModal}
       />
     </Container>
   );

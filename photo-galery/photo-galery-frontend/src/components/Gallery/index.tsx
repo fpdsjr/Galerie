@@ -1,8 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
-import { useEffect, useState } from 'react';
-
-import { ImageInfoProvider } from '../../context/ImageInfoProvider';
-import useFetch from '../../hooks/useFetch';
+import { useImage } from '../../context/ImageInfoProvider/useImage';
 import useHandleModal from '../../hooks/useHandleModal';
 import ImageModal from '../ImageModal';
 import Thumbnail from '../Thumbnail';
@@ -17,44 +13,30 @@ interface IListImagesRequest {
 }
 
 interface IGalleryProps {
-  setUserHasImage: (args: boolean) => void;
+  galleryImages: IListImagesRequest[];
 }
 
-function Gallery({ setUserHasImage }: IGalleryProps) {
-  const [images, setImages] = useState<IListImagesRequest[]>([]);
-
+function Gallery({ galleryImages }: IGalleryProps) {
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
-  async function fetchImages() {
-    const { axiosResponse } = useFetch(0, '/list/images');
-    setUserHasImage(!!axiosResponse?.data.length);
-    setImages(axiosResponse?.data);
-  }
-
-  useEffect(() => {
-    fetchImages();
-  }, [isModalOpen]);
-
   return (
-    <ImageInfoProvider>
-      <Container
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={{ exit: { transition: { staggerChildren: 0.1 } } }}>
-        {images.map(({ id, url, name, short_url, key }) => (
-          <Thumbnail
-            key={id}
-            imageInfos={{ url, name, short_url, key }}
-            handleOpenImageModal={handleOpenModal}
-          />
-        ))}
-        <ImageModal
-          isImageModalOpen={isModalOpen}
-          handleCloseImageModal={handleCloseModal}
+    <Container
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      variants={{ exit: { transition: { staggerChildren: 0.1 } } }}>
+      {galleryImages.map(({ id, url, name, short_url, key }) => (
+        <Thumbnail
+          key={id}
+          imageInfos={{ id, url, name, short_url, key }}
+          handleOpenImageModal={handleOpenModal}
         />
-      </Container>
-    </ImageInfoProvider>
+      ))}
+      <ImageModal
+        isImageModalOpen={isModalOpen}
+        handleCloseImageModal={handleCloseModal}
+      />
+    </Container>
   );
 }
 

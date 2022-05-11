@@ -9,6 +9,7 @@ import Login from './components/Login';
 import { Redirect } from './components/Redirect';
 import SignUp from './components/SignUp';
 import { AuthProvider } from './context/AuthProvider';
+import { ImageInfoProvider } from './context/ImageInfoProvider';
 import { GlobalStyle } from './styles/global';
 
 Modal.setAppElement('#root');
@@ -24,9 +25,11 @@ function App() {
             <Route
               path="/home"
               element={
-                <Redirect>
-                  <GalleryMain />
-                </Redirect>
+                <ImageInfoProvider>
+                  <Redirect>
+                    <GalleryMain />
+                  </Redirect>
+                </ImageInfoProvider>
               }
             />
             <Route path="/signup" element={<SignUp />} />

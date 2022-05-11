@@ -17,7 +17,7 @@ function UploadModal({
       className="react-modal-upload-modal"
       isOpen={isUploadModalOpen}
       onRequestClose={() => handleCloseUploadModal()}>
-      <Upload />
+      <Upload handleCloseUploadModal={handleCloseUploadModal} />
     </Modal>
   );
 }

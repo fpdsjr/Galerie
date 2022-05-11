@@ -7,25 +7,29 @@ interface IModelImage {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
   gap: 1rem;
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   padding: 1rem;
+  margin: 0 auto;
   gap: 1rem;
-  width: 100%;
-  justify-content: flex-end;
-  position: sticky;
+  width: 90%;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    gap: 2rem;
+  }
+
   button {
     width: 8rem;
     height: 2.5rem;
   }
 `;
 
-export const ShareButton = styled.button`
+export const Button = styled.button`
   display: flex;
   width: 8rem;
   height: 2.5rem;
@@ -35,20 +39,22 @@ export const ShareButton = styled.button`
 `;
 
 const maxSizes = {
-  defaultImageWidth: '1300px',
-  defaultImageHeight: '720px',
-  zoomImageWidth: '1680px',
-  zoomImageHeight: '900px',
+  defaultImageWidth: '800px',
+  defaultImageHeight: '700px',
+  zoomImageWidth: '100%',
+  zoomImageHeight: '100%',
 };
 
 export const ModalImage = styled.img<IModelImage>`
   margin: 0 auto;
+  object-fit: contain;
+
   max-width: ${({ imageClick }) =>
     imageClick ? maxSizes.zoomImageWidth : maxSizes.defaultImageWidth};
   max-height: ${({ imageClick }) =>
     imageClick ? maxSizes.zoomImageHeight : maxSizes.defaultImageHeight};
-  width: 100%;
-  height: 100vh;
+  width: auto;
+  height: auto;
 
   &:hover {
     cursor: ${({ imageClick }) => (imageClick ? 'zoom-out' : 'zoom-in')};

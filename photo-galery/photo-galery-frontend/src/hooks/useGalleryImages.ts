@@ -15,19 +15,24 @@ export function useGalleryImages(
   isModalOpen: boolean,
 ) {
   const [galleryImages, setGalleryImages] = useState<IListImagesRequest[]>([]);
+  const [galleryLength, setGalleryLength] = useState(0);
+  const [isFetching, setIsFetching] = useState(true);
 
   async function handleFetch() {
     const response = await Api.get('/list/images');
 
     setGalleryImages(response.data);
+    setGalleryLength(response.data.length);
   }
 
   useEffect(() => {
     handleFetch();
+    setIsFetching(false);
   }, []);
 
   useEffect(() => {
     handleFetch();
+    setIsFetching(false);
   }, [isModalOpen]);
 
   useEffect(() => {
@@ -35,9 +40,12 @@ export function useGalleryImages(
       (image: IListImagesRequest) => image.id !== deletedId,
     );
     setGalleryImages(deleteImage);
+    setIsFetching(false);
   }, [deletedId]);
 
   return {
     galleryImages,
+    isFetching,
+    galleryLength,
   };
 }

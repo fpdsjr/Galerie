@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { saveAs } from 'file-saver';
-import React, { useEffect, useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FcCheckmark } from 'react-icons/fc';
 import { FiDownload } from 'react-icons/fi';
 import { IoIosShareAlt } from 'react-icons/io';
 import Modal from 'react-modal';
-import { useCopyToClipboard } from 'react-use';
 
 import { useImage } from '../../context/ImageInfoProvider/useImage';
+import { useClipboard } from '../../hooks/useClipboard';
+import useImageClick from '../../hooks/useImageClick';
 import { Api } from '../../services/api';
-import { Container, ButtonsContainer, ModalImage } from './styles';
+import { Container, ButtonsContainer, ModalImage, Button } from './styles';
 
 interface IImageModalProps {
   isImageModalOpen: boolean;
@@ -21,27 +21,18 @@ function ImageModal({
   isImageModalOpen,
   handleCloseImageModal,
 }: IImageModalProps) {
-  const [imageClick, setImageClick] = useState(false);
-  const [state, copyToClipboard] = useCopyToClipboard();
+  const { ImageInfo, setDeletedId } = useImage();
+  const { imageClick, handleImageClick } = useImageClick(isImageModalOpen);
+  const { isCopied, copyToClipboard } = useClipboard({ handleCloseImageModal });
 
-  const { ImageInfo } = useImage();
-
-  function handleImageClick() {
-    setImageClick(!imageClick);
+  function handleDownload() {
+    saveAs(ImageInfo!.url, 'image.jpg');
   }
-
-  const handleDownload = () => {
-    saveAs(ImageInfo!.url, 'image/*');
-  };
 
   async function handleDelete() {
     await Api.post('/delete', { key: ImageInfo?.key });
     handleCloseImageModal();
   }
-
-  useEffect(() => {
-    copyToClipboard('');
-  }, [handleCloseImageModal]);
 
   return (
     <Modal
@@ -53,26 +44,31 @@ function ImageModal({
       onRequestClose={handleCloseImageModal}>
       <Container>
         <ButtonsContainer>
-          <button type="button" onClick={handleDelete}>
+          <Button
+            type="button"
+            onClick={() => {
+              handleDelete();
+              setDeletedId(ImageInfo?.id);
+            }}>
             <AiFillDelete size={20} />
             Delete
-          </button>
+          </Button>
           <div>
-            <button
+            <Button
               type="button"
               onClick={() => copyToClipboard(ImageInfo!.short_url)}>
-              {state.value ? (
+              {isCopied ? (
                 <FcCheckmark size={20} />
               ) : (
                 <IoIosShareAlt size={20} />
               )}
-              {state.value ? 'Copied' : 'Share'}
-            </button>
+              {isCopied ? 'Copied' : 'Share'}
+            </Button>
 
-            <button type="button" onClick={handleDownload}>
+            <Button type="button" onClick={() => handleDownload()}>
               <FiDownload size={20} />
               Download
-            </button>
+            </Button>
           </div>
         </ButtonsContainer>
         <ModalImage

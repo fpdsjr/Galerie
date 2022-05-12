@@ -14,16 +14,18 @@ type methodName = 'post' | 'get' | 'delete' | 'patch' | 'put';
 
 export default function useFetch<T = unknown>(method: methodName, url: string) {
   const [axiosResponse, setAxiosResponse] = useState<T | null>(null);
+  const [isFetching, setIsFetching] = useState(true);
 
   async function handleFetch() {
     const response = await ApiRequest[method](url);
 
     setAxiosResponse(response.data);
+    setIsFetching(false);
   }
 
   useEffect(() => {
     handleFetch();
   }, []);
 
-  return { axiosResponse };
+  return { axiosResponse, isFetching };
 }

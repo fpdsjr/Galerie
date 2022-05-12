@@ -2,12 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --baby-blue: #70d6ffff;
-    --french-pink: #ff70a6ff;
-    --mikado-yellow: #ffc728ff;
-    --deep-space-sparkle: #4c5b61ff;
-    --dark-slate-gray: #2c423fff;
+    --border-color: #d7d7d7;
     --background: #f0f2f5;
+    --button-color-primary: #111111;
+    --button-color-secondary: #273339;
   }
   
   * {
@@ -65,10 +63,10 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-image-modal {
     margin: 0 auto;
     width: 100%;
-    max-width: 88%;
+    max-width: 90%;
     height: 90%;
     border-radius: 0.25rem;
-    background-color: #f0f2f5;
+    background-color: var(--background);
     border: none;
     overflow: hidden;
   }
@@ -76,11 +74,11 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-image-modal-size {
     margin: 0 auto;
     width: 100%;
-    max-width: 88%;
+    max-width: 90%;
     padding-bottom: 5rem;
     height: 100vh;
     border-radius: 0.25rem;
-    background-color: #f0f2f5;
+    background-color: var(--background);
     overflow: scroll;
     margin-top: 30px;
     border: none;
@@ -103,7 +101,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 88%;
     height: 88%;
     border-radius: 0.25rem;
-    background-color: #f0f2f5;
+    background-color: var(--background);
     overflow: auto;
   }
 

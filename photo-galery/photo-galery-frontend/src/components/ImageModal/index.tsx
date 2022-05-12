@@ -26,7 +26,7 @@ function ImageModal({
   const { isCopied, copyToClipboard } = useClipboard({ handleCloseImageModal });
 
   function handleDownload() {
-    saveAs(ImageInfo!.url, 'image.jpg');
+    saveAs(ImageInfo!.url, `${ImageInfo?.name}`);
   }
 
   async function handleDelete() {

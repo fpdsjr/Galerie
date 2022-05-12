@@ -34,7 +34,7 @@ export const DropzoneContainer = styled.div<IProps>`
     fileLength > 0 ? withImageWidth : withoutImageWidth};
   height: ${({ fileLength }) =>
     fileLength > 0 ? withImageHeight : withoutImageHeight};
-  border: 2px dashed #d7d7d7;
+  border: 2px dashed var(--border-color);
   border-radius: 0.25rem;
   position: ${({ fileLength }) => (fileLength > 0 ? 'absolute' : '')};
 

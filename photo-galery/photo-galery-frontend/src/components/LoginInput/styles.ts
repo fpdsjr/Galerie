@@ -6,13 +6,13 @@ export const Container = styled.div`
   gap: 2rem;
   flex-flow: column wrap;
   text-align: center;
-  color: #273339;
+  color: var(--button-color-secondary);
 
   span {
     display: block;
     text-align: left;
     margin-bottom: 0.5rem;
-    color: #273339;
+    color: var(--button-color-secondary);
   }
 
   input {
@@ -20,7 +20,7 @@ export const Container = styled.div`
     max-width: 32rem;
     height: 2.5rem;
     border-radius: 0.25rem;
-    border: 1px solid #d7d7d7;
+    border: 1px solid var(--border-color);
     padding: 0.5rem;
   }
 
@@ -48,8 +48,8 @@ export const ButtonContainer = styled.button`
   text-align: center;
   border-radius: 0.25rem;
   background: #fec001;
-  color: #273339;
-  border: 1px solid #d7d7d7;
+  color: var(--button-color-secondary);
+  border: 1px solid var(--border-color);
   text-align: center;
   transition: all 0.2s;
 
@@ -64,7 +64,7 @@ export const JoinButton = styled.button`
   font-weight: 600;
   border-radius: 0.25rem;
   text-decoration: underline;
-  color: #111111;
+  color: var(--button-color-primary);
   border: 0;
   text-align: center;
   transition: all 0.2s;

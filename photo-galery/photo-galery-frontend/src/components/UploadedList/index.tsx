@@ -35,7 +35,7 @@ function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
 
     data.append('file', image.file, image.name);
 
-    // await Api.post('/upload', data);
+    await Api.post('/upload', data);
 
     image.uploaded = true;
 
@@ -56,7 +56,7 @@ function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
           <button type="button" onClick={() => deleteImage(id)}>
             <MdOutlineCancel size={40} title="Remove" />
           </button>
-          {uploaded ? <Loader src={LoaderSvg} alt="loader" /> : ''}
+          {!uploaded ? <Loader src={LoaderSvg} alt="loader" /> : ''}
         </PreviewContainer>
       ))}
     </Container>

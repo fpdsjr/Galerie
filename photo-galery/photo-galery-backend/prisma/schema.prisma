@@ -20,7 +20,7 @@ model User {
 
 model Photo {
   id        Int      @id @default(autoincrement())
-  name      String
+  name      String   @unique
   size      String
   key       String   @unique
   createdAt DateTime @default(now())

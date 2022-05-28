@@ -30,7 +30,7 @@ function ImageModal({
   }
 
   async function handleDelete() {
-    await Api.post('/delete', { key: ImageInfo?.key });
+    await Api.post('/delete', { name: ImageInfo?.name });
     handleCloseImageModal();
   }
 

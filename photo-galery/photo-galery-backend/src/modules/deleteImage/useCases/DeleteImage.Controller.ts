@@ -8,8 +8,8 @@ export class DeleteImageController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async handle(@Body() { key }) {
-    const deleteImage = await this.deleteImageService.execute(key);
+  async handle(@Body() { name }) {
+    const deleteImage = await this.deleteImageService.execute(name);
 
     return deleteImage;
   }

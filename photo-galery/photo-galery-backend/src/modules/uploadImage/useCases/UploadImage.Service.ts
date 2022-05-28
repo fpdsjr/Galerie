@@ -20,13 +20,6 @@ export class UploadImageService {
     const path = resolve(tmpFolder, filename);
     const fileStream = createReadStream(path);
 
-    // const verifyIfImageNameAlreadyExists = await prisma.photo.findFirst({
-    //   where: {
-    //     name: originalname,
-    //     user_id: sub,
-    //   },
-    // });
-
     try {
       const upload = await this.storageProvider.upload(
         fileStream,

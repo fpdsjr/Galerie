@@ -23,7 +23,10 @@ function GalleryMain() {
   } = useHandleModal();
 
   const { deletedId } = useImage();
-  const { galleryImages } = useGalleryImages(deletedId, isUploadModalOpen);
+  const { galleryImages, isFetching } = useGalleryImages(
+    deletedId,
+    isUploadModalOpen,
+  );
 
   function toggleModalUser() {
     setModalUser(!modalUser);
@@ -42,11 +45,13 @@ function GalleryMain() {
       />
 
       <UserDropDown modalUser={modalUser} menuRef={menuRef} />
-      {galleryImages?.length ? (
-        <Gallery galleryImages={galleryImages} />
-      ) : (
-        <FirstSteps />
-      )}
+
+      {!isFetching &&
+        (galleryImages?.length ? (
+          <Gallery galleryImages={galleryImages} />
+        ) : (
+          <FirstSteps />
+        ))}
     </Container>
   );
 }

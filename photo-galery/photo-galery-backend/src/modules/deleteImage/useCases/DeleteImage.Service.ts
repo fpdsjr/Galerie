@@ -6,18 +6,24 @@ import { StorageProvider } from 'src/shared/container/StorageProvider/StoragePro
 export class DeleteImageService {
   constructor(private storageProvider: StorageProvider) {}
 
-  async execute(key: string) {
+  async execute(name: string) {
+    const Image = await prisma.photo.findFirst({
+      where: {
+        name,
+      },
+    });
+
     try {
       await prisma.photo.delete({
         where: {
-          key,
+          name,
         },
       });
     } catch (err) {
       throw new NotFoundException('No image to be deleted');
     }
 
-    const deleteImageS3 = await this.storageProvider.delete(key);
+    const deleteImageS3 = await this.storageProvider.delete(Image.key);
 
     return deleteImageS3;
   }

@@ -26,13 +26,11 @@ export function useGalleryImages(
   }
 
   useEffect(() => {
-    handleFetch();
-    setIsFetching(false);
-  }, []);
-
-  useEffect(() => {
-    handleFetch();
-    setIsFetching(false);
+    async function loadingData() {
+      await handleFetch();
+      setIsFetching(false);
+    }
+    loadingData();
   }, [isModalOpen]);
 
   useEffect(() => {
@@ -40,7 +38,6 @@ export function useGalleryImages(
       (image: IListImagesRequest) => image.id !== deletedId,
     );
     setGalleryImages(deleteImage);
-    setIsFetching(false);
   }, [deletedId]);
 
   return {

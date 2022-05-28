@@ -4,9 +4,11 @@
 import { uniqueId } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { v4 as uuidV4 } from 'uuid';
 
 import uploadSvg from '../../assets/upload-animation.svg';
 import { useImage } from '../../context/ImageInfoProvider/useImage';
+import { Api } from '../../services/api';
 import UploadedList from '../UploadedList';
 import {
   Container,
@@ -44,7 +46,7 @@ function Upload({ handleCloseUploadModal }: IUploadProps) {
     const upload = uploadFiles.map((file) => ({
       file,
       id: uniqueId(),
-      name: file.name,
+      name: uuidV4() + file.name,
       preview: URL.createObjectURL(file),
       uploaded: false,
     }));
@@ -61,10 +63,16 @@ function Upload({ handleCloseUploadModal }: IUploadProps) {
     accept: 'image/jpeg,image/png',
   });
 
-  function deleteImage(id: string) {
+  async function deleteImage(id: string) {
+    const imageTobeDeleted = filesTobeUploaded.filter(
+      (image: IPreviewUploadList) => image.id === id,
+    );
     const deletedImage = filesTobeUploaded.filter((image) => image.id !== id);
 
+    console.log(imageTobeDeleted[0].name);
+
     setFilesTobeUploaded(deletedImage);
+    await Api.post('/delete', { name: imageTobeDeleted[0].name });
   }
 
   return (

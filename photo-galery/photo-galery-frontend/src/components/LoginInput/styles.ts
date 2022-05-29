@@ -30,6 +30,23 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 2.5rem;
   }
+
+  @media (max-width: 450px) {
+    width: 100%;
+
+    input {
+      width: 24rem;
+      max-width: 24rem;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+  }
 `;
 
 export const ErrorMessage = styled.span`
@@ -56,6 +73,12 @@ export const ButtonContainer = styled.button`
   &:hover {
     transition: all 0.2s ease-in-out 0s;
     filter: brightness(0.8);
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+    width: 24rem;
+    max-width: 24rem;
   }
 `;
 

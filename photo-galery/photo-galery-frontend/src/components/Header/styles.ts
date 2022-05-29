@@ -20,6 +20,14 @@ export const Container = styled.div`
     justify-content: center;
     gap: 2rem;
   }
+
+  @media (max-width: 450px) {
+    padding: 2rem 0.5rem;
+
+    div {
+      gap: 0rem;
+    }
+  }
 `;
 
 export const HeaderDefaultButton = styled.button`

@@ -39,7 +39,7 @@ function Home() {
             </button>
           </div>
         </TextContainer>
-        <div>
+        <div className="image-container">
           <img src={heroImage} alt="hero img" />
         </div>
       </Container>

@@ -4,6 +4,10 @@ import signUpImage from '../../assets/signup.jpg';
 
 export const Container = styled.div`
   display: flex;
+
+  form {
+    width: 100%;
+  }
 `;
 
 const blur = keyframes`
@@ -24,4 +28,8 @@ export const ImageContainer = styled.div`
   height: 100vh;
   filter: brightness(0.6);
   animation: 1s ${blur} ease-in-out;
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 `;

@@ -6,7 +6,7 @@ export const Container = styled.form`
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  width: 100%;
 
   h1 {
     font-size: 3rem;
@@ -44,6 +44,52 @@ export const Container = styled.form`
 
     input {
       width: 19rem;
+    }
+  }
+
+  @media (max-width: 450px) {
+    padding: 9rem 0rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    input {
+      width: 24rem;
+      height: 2.5rem;
+      border-radius: 0.25rem;
+      border: 1px solid var(--border-color);
+      padding: 0.5rem;
+    }
+
+    button {
+      width: 24rem;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: underline;
+      color: var(--button-color-primary);
+      transition: all 0.2s;
+      border: 0;
+      &:hover {
+        transition: all 0.2s ease-in-out 0s;
+        color: #cb8805;
+      }
+    }
+
+    div {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 24rem;
+      }
+    }
+
+    p {
+      button {
+        width: 30px;
+      }
     }
   }
 `;

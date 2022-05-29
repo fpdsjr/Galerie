@@ -44,7 +44,9 @@ function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
 
   useEffect(() => {
     filesTobeUploaded.forEach((file) => {
-      processUpload(file);
+      if (!file.uploaded) {
+        processUpload(file);
+      }
     });
   }, [filesTobeUploaded]);
 

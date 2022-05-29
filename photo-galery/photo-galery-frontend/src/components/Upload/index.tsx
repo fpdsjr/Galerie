@@ -69,8 +69,6 @@ function Upload({ handleCloseUploadModal }: IUploadProps) {
     );
     const deletedImage = filesTobeUploaded.filter((image) => image.id !== id);
 
-    console.log(imageTobeDeleted[0].name);
-
     setFilesTobeUploaded(deletedImage);
     await Api.post('/delete', { name: imageTobeDeleted[0].name });
   }

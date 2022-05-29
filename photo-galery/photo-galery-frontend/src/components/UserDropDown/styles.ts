@@ -67,4 +67,8 @@ export const Square = styled.div`
   height: 10px;
   transform: rotate(45deg);
   background-color: #e5ad01;
+
+  @media (max-width: 450px) {
+    left: 77%;
+  }
 `;

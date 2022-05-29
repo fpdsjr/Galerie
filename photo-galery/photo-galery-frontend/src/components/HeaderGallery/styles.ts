@@ -22,6 +22,26 @@ export const Container = styled.div`
     justify-content: center;
     gap: 2rem;
   }
+
+  @media (max-width: 450px) {
+    padding: 2rem 0.5rem;
+
+    div {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    padding: 2rem 0.5rem;
+
+    div {
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    padding: 1rem 0.5rem;
+  }
 `;
 
 export const UploadButton = styled.button`
@@ -47,6 +67,14 @@ export const UploadButton = styled.button`
     transform: scale(1.03);
     filter: brightness(0.9);
   }
+
+  @media (max-width: 450px) {
+    height: 45px;
+  }
+
+  @media (max-width: 360px) {
+    width: 110px;
+  }
 `;
 
 export const MenuImageDropDown = styled.div`
@@ -60,5 +88,11 @@ export const MenuImageDropDown = styled.div`
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media (max-width: 360px) {
+    width: 30px;
+    height: 30px;
+    background-size: 30px;
   }
 `;

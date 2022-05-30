@@ -24,6 +24,10 @@ export const Container = styled.div`
     }
   }
 
+  @media (max-width: 850px) {
+    height: auto;
+  }
+
   @media (max-width: 450px) {
     width: 100%;
 

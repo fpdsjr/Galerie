@@ -17,6 +17,15 @@ export const Container = styled.div`
     width: 60%;
   }
 
+  @media (max-width: 850px) {
+    background-size: 0px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
   @media (max-width: 450px) {
     display: flex;
     flex-direction: column-reverse;

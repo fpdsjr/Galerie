@@ -27,7 +27,13 @@ export const Container = styled.div<IProps>`
   column-count: 2;
   column-gap: 10px;
 
-  @media (max-width: 450px) {
+  @media (max-width: 850px) {
+    width: ${({ fileLength }) => (fileLength > 0 ? '100%' : '0%')};
+    height: ${({ fileLength }) => (fileLength > 0 ? '100%' : '0%')};
+    column-count: 1;
+  }
+
+  @media (max-width: 700px) {
     width: ${({ fileLength }) => (fileLength > 0 ? '100%' : '0%')};
     column-count: 1;
   }

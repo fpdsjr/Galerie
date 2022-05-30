@@ -9,7 +9,7 @@ export const Container = styled.div<IProps>`
   gap: ${({ fileLength }) => (fileLength > 0 ? '1rem' : '0rem')};
   padding: 1rem;
 
-  @media (max-width: 450px) {
+  @media (max-width: 700px) {
     align-items: center;
     justify-content: center;
     flex-direction: column-reverse;
@@ -35,6 +35,7 @@ export const DropzoneContainer = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   width: ${({ fileLength }) =>
     fileLength > 0 ? withImageWidth : withoutImageWidth};
@@ -45,16 +46,22 @@ export const DropzoneContainer = styled.div<IProps>`
   position: ${({ fileLength }) => (fileLength > 0 ? 'absolute' : '')};
 
   img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     object-position: ${({ fileLength }) => (fileLength > 0 ? '-10px' : '')};
-    width: ${({ fileLength }) => (fileLength > 0 ? '280px' : '1200px')};
+    width: ${({ fileLength }) => (fileLength > 0 ? '280px' : '50%')};
     height: ${({ fileLength }) => (fileLength > 0 ? '100%' : '600px')};
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 1550px) {
     position: relative;
-    background-color: red;
-    width: ${({ fileLength }) =>
-      fileLength > 0 ? '252px' : withoutImageWidth};
+    width: ${({ fileLength }) => (fileLength > 0 ? '100%' : withoutImageWidth)};
+  }
+
+  @media (max-width: 700px) {
+    position: relative;
+    width: ${({ fileLength }) => (fileLength > 0 ? '100%' : withoutImageWidth)};
     height: ${({ fileLength }) =>
       fileLength > 0 ? '200px' : withoutImageHeight};
 
@@ -91,8 +98,8 @@ export const DoneButton = styled.button<IProps>`
     filter: brightness(0.9);
   }
 
-  @media (max-width: 450px) {
-    width: 250px;
+  @media (max-width: 700px) {
+    width: 100%;
     position: relative;
   }
 `;
@@ -103,10 +110,11 @@ export const LeftElementContainer = styled.div<IProps>`
   height: ${({ fileLength }) =>
     fileLength > 0 ? withImageHeight : withoutImageHeight};
 
-  @media (max-width: 450px) {
+  @media (max-width: 700px) {
     display: flex;
     gap: 4rem;
     flex-direction: column;
+    align-items: center;
 
     width: ${({ fileLength }) => (fileLength > 0 ? '100%' : withoutImageWidth)};
     height: ${({ fileLength }) =>

@@ -10,13 +10,14 @@ export const Container = styled.div`
     width: 50%;
 
     img {
+      width: 100%;
       height: 89vh;
       object-position: 60px;
       margin-top: 5px;
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 900px) {
     flex-direction: column-reverse;
 
     .image-container {
@@ -26,12 +27,16 @@ export const Container = styled.div`
     }
 
     div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       width: 100%;
 
       img {
-        width: 300px;
+        object-position: -50px;
+        width: 100%;
         height: 300px;
-        object-position: 0px;
       }
     }
   }
@@ -67,7 +72,7 @@ export const TextContainer = styled.div`
       font-weight: 700;
       width: 140px;
       height: 60px;
-      padding: 0 0px;
+      padding: 0;
       position: relative;
       transition: all 0.2s ease-in-out 0s;
       box-shadow: 1px 1px 5px #384850;
@@ -81,6 +86,33 @@ export const TextContainer = styled.div`
       box-shadow: 1px 1px 10px black;
       transition: all 0.2s ease-in-out 0s;
       filter: brightness(0.9);
+    }
+  }
+
+  @media (max-width: 950px) {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+
+    h1 {
+      line-height: 2.5rem;
+    }
+
+    p {
+      padding: 0.5rem;
+      margin-top: 40px;
+      line-height: 2.5rem;
+    }
+
+    div {
+      justify-content: center;
+      gap: 2rem;
+
+      button {
+        height: 50px;
+      }
     }
   }
 

@@ -47,7 +47,7 @@ export const Container = styled.form`
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 750px) {
     padding: 9rem 0rem;
 
     h1 {

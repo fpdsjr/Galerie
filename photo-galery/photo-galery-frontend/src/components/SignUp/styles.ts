@@ -29,7 +29,7 @@ export const ImageContainer = styled.div`
   filter: brightness(0.6);
   animation: 1s ${blur} ease-in-out;
 
-  @media (max-width: 450px) {
+  @media (max-width: 750px) {
     display: none;
   }
 `;

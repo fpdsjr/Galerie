@@ -8,6 +8,12 @@ export const Container = styled.div<IProps>`
   display: flex;
   gap: ${({ fileLength }) => (fileLength > 0 ? '1rem' : '0rem')};
   padding: 1rem;
+
+  @media (max-width: 450px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
 `;
 
 const dropZoneSizes = {
@@ -43,6 +49,20 @@ export const DropzoneContainer = styled.div<IProps>`
     width: ${({ fileLength }) => (fileLength > 0 ? '280px' : '1200px')};
     height: ${({ fileLength }) => (fileLength > 0 ? '100%' : '600px')};
   }
+
+  @media (max-width: 450px) {
+    position: relative;
+    background-color: red;
+    width: ${({ fileLength }) =>
+      fileLength > 0 ? '252px' : withoutImageWidth};
+    height: ${({ fileLength }) =>
+      fileLength > 0 ? '200px' : withoutImageHeight};
+
+    img {
+      width: ${({ fileLength }) => (fileLength > 0 ? '220px' : '200px')};
+      height: ${({ fileLength }) => (fileLength > 0 ? '100%' : '400px')};
+    }
+  }
 `;
 
 export const DoneButton = styled.button<IProps>`
@@ -54,7 +74,6 @@ export const DoneButton = styled.button<IProps>`
   background: #fec001;
   padding: 0 2rem;
   height: 50px;
-  position: relative;
   transition: all 0.2s ease-in-out 0s;
   box-shadow: 1px 1px 5px #384850;
   position: absolute;
@@ -71,6 +90,11 @@ export const DoneButton = styled.button<IProps>`
     transform: scale(1.03);
     filter: brightness(0.9);
   }
+
+  @media (max-width: 450px) {
+    width: 250px;
+    position: relative;
+  }
 `;
 
 export const LeftElementContainer = styled.div<IProps>`
@@ -78,4 +102,14 @@ export const LeftElementContainer = styled.div<IProps>`
     fileLength > 0 ? withImageWidth : withoutImageWidth};
   height: ${({ fileLength }) =>
     fileLength > 0 ? withImageHeight : withoutImageHeight};
+
+  @media (max-width: 450px) {
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+
+    width: ${({ fileLength }) => (fileLength > 0 ? '100%' : withoutImageWidth)};
+    height: ${({ fileLength }) =>
+      fileLength > 0 ? '100%' : withoutImageHeight};
+  }
 `;

@@ -26,6 +26,11 @@ export const Container = styled.div<IProps>`
   width: ${({ fileLength }) => (fileLength > 0 ? '76%' : '0%')};
   column-count: 2;
   column-gap: 10px;
+
+  @media (max-width: 450px) {
+    width: ${({ fileLength }) => (fileLength > 0 ? '100%' : '0%')};
+    column-count: 1;
+  }
 `;
 
 export const PreviewContainer = styled.div`

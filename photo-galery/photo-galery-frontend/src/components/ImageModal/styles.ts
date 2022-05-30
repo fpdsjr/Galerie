@@ -27,6 +27,28 @@ export const ButtonsContainer = styled.div`
     width: 8rem;
     height: 2.5rem;
   }
+
+  @media (max-width: 450px) {
+    div {
+      gap: 1rem;
+    }
+
+    button {
+      width: 7rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    div {
+      gap: 1rem;
+    }
+
+    button {
+      width: 6rem;
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -58,5 +80,10 @@ export const ModalImage = styled.img<IModelImage>`
 
   &:hover {
     cursor: ${({ imageClick }) => (imageClick ? 'zoom-out' : 'zoom-in')};
+  }
+
+  @media (max-width: 450px) {
+    max-width: ${({ imageClick }) => (imageClick ? '90%' : '100%')};
+    max-height: ${({ imageClick }) => (imageClick ? '90%' : '100%')};
   }
 `;

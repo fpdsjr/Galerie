@@ -35,7 +35,7 @@ function UploadedList({ filesTobeUploaded, deleteImage }: IProps) {
 
     data.append('file', image.file, image.name);
 
-    await Api.post('/upload', data);
+    // await Api.post('/upload', data);
 
     image.uploaded = true;
 

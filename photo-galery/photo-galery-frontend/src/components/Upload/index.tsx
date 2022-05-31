@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/jsx-props-no-spreading */
 import { uniqueId } from 'lodash';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { v4 as uuidV4 } from 'uuid';
 
 import uploadSvg from '../../assets/upload-animation.svg';
-import { useImage } from '../../context/ImageInfoProvider/useImage';
 import { Api } from '../../services/api';
 import UploadedList from '../UploadedList';
 import {

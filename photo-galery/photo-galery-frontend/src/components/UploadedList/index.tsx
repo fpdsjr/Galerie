@@ -1,5 +1,4 @@
-/* eslint-disable no-param-reassign */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 
 import LoaderSvg from '../../assets/loader.svg';

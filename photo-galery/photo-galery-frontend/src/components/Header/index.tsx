@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Container, HeaderDefaultButton } from './styles';
 
 function Header() {

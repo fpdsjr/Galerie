@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { saveAs } from 'file-saver';
 import { AiFillDelete } from 'react-icons/ai';
 import { FcCheckmark } from 'react-icons/fc';

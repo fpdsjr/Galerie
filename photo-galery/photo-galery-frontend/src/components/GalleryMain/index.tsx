@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { useImage } from '../../context/ImageInfoProvider/useImage';
 import useCloseMenuDropDown from '../../hooks/useCloseMenuDropDown';

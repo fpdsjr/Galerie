@@ -1,4 +1,3 @@
-import { useImage } from '../../context/ImageInfoProvider/useImage';
 import useHandleModal from '../../hooks/useHandleModal';
 import ImageModal from '../ImageModal';
 import Thumbnail from '../Thumbnail';

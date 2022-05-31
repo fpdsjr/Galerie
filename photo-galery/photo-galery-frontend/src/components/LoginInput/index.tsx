@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Field, Form, Formik } from 'formik';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { LoginSchema } from '../../utils/LoginSchema';

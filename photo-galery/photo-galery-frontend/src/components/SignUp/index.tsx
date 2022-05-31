@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

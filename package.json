@@ -5,8 +5,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "photo-galery/*"
-    ] 
+      "photo-gallery/*"
+    ]
   },
   "author": "fpdsjr <flaviopds.jr@gmail.com>",
   "license": "MIT"

@@ -82,8 +82,8 @@ export const ModalImage = styled.img<IModelImage>`
     cursor: ${({ imageClick }) => (imageClick ? 'zoom-out' : 'zoom-in')};
   }
 
-  @media (max-width: 450px) {
-    max-width: ${({ imageClick }) => (imageClick ? '90%' : '100%')};
-    max-height: ${({ imageClick }) => (imageClick ? '90%' : '100%')};
+  @media (max-width: 1000px) {
+    max-width: ${({ imageClick }) => (imageClick ? '100%' : '90%')};
+    max-height: ${({ imageClick }) => (imageClick ? '100%' : '90%')};
   }
 `;

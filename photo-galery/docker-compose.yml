@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:13
+    container_name:
+    restart: always
+    environment:
+      - POSTGRES_USER=photogalery
+      - POSTGRES_PASSWORD=galery
+      - POSTGRES_DB=photo_galery
+    volumes:
+      - photo-galery:/data/postgres
+  backend:
+    build: ./photo-galery-backend
+    ports:
+      - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://photogalery:galery@db:5432/photo_galery?schema=public
+    depends_on:
+      - db
+  frontend:
+    build: ./photo-galery-frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+volumes:
+  photo-galery:
+    driver: local

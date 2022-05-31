@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:13
+    container_name: photo_galery
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=photogalery
+      - POSTGRES_PASSWORD=galery
+      - POSTGRES_DB=photo_galery
+    volumes:
+      - photo:/data/postgres
+
+volumes:
+  photo:
+    driver: local

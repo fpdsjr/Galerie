@@ -1,6 +1,6 @@
 # Galerie
 
-É um projeto fullstack, que oferece uma galeria de fotos privada. O Usuário tem a possibilidade de fazer upload e download de fotos, ainda é possível compartilhar fotos com seus amigos através da criação de links.
+É um projeto fullstack, que oferece uma galeria de fotos privada. O usuário tem a possibilidade de fazer upload e download de fotos, ainda é possível compartilhar fotos com seus amigos através da criação de links.
 
 ## Demo
 

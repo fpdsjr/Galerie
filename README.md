@@ -20,10 +20,10 @@ A aplicação conta ainda com a integração através do axios com a api [shrtco
 
 O Frontend da aplicação foi feito utilizando React junto com Typescript e Styled-Components para estilização.
 
-Para o desenvolvimento foi utilizado o Context Api no gerenciamento global do estado. Custom hooks visando ajudar no reaproveitamento de código e separação da logica. React Routes para lidar com as diferentes rotas da aplicação e
+Para o desenvolvimento foi utilizado o Context Api no gerenciamento global do estado. Custom hooks visando ajudar no reaproveitamento de código e separação da logica. React Router para lidar com as diferentes rotas da aplicação e
 Axios no tratamento de todas as requisições ao backend.
 
-Para lidar com os formulários foi usado o Formik e para a validação dos mesmos o Yup.
+Na criação dos formulários foi usado o Formik e para a validação dos inputs o Yup.
 
 Entre os principais desafios no processo de desenvolvimento estão a implementação da biblioteca frame-motion que possibilita a animações no componente de exibição das fotos, e a implementação da biblioteca Dropzone que permite o 'drag and drop' de fotos na zona especifica para upload.
 

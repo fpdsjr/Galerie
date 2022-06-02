@@ -60,7 +60,7 @@ function SignUpInput({ handleSubmit }: ISignUpInputProps) {
           <label htmlFor="password">
             <span>Password</span>
             <Field id="password" name="password" type="password" />
-            {errors.password && errors.password && (
+            {errors.password && touched.password && (
               <ErrorMessage>{errors.password}</ErrorMessage>
             )}
           </label>

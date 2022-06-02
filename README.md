@@ -4,7 +4,7 @@
 
 ## Demo
 
-![Galerie](https://i.imgur.com/AoxQOnN.mp4)
+![Galerie]()
 
 ## Backend
 

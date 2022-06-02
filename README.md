@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/87545541/171568202-7b71fa17-eff9-489a-
 
 O Backend do projeto foi desenvolvido com o framework Nestjs e Prisma. Utilizou-se o POSTGRES como banco de dados. A aplicação conta com um CRUD completo e sistema de login utilizando JWT e Argon para a criptografia de senha.
 
-O fluxo utilizado no armazenamento das fotos, consiste em a partir do upload da foto é enviado uma referencia da foto para o banco de dados e a foto completa para um bucket s3 na AMAZON AWS.
+O fluxo utilizado no armazenamento das fotos, consiste em a partir do upload da foto é enviado uma referencia da foto para o banco de dados e a foto completa para um bucket S3 na AMAZON AWS.
 
 A aplicação conta ainda com a integração através do axios com a api [shrtco](https://shrtco.de/docs/) que possibilita o encurtamento de links.
 
